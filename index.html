@@ -7,12 +7,18 @@
         <link rel="stylesheet" href="css/estilos.css">
     </head>
     <body>
-        <form action="validarLogin.php" method="post">
-            <h2>Formulario de login</h2>
-            <input type="text" placeholder="&#9000; Usuario" name="usuario">
-            <input type="password" placeholder="&#128477; Contraseña" name="clave">
-            <input type="submit" value="INGRESAR" name="ingresar">
-            <input type="submit" value="recuperar contraseña" name="reestablecer">
-        </form>
+        <div>
+            <img id="imgPrincipal" src="./images/IUPG.png" style="width:192px;height:47px;">   
+        </div>
+        <div>
+            <form action="validarLogin.php" method="post">
+                <h1>!Bienvenido!</h1>
+                <p>Sistema de Gestión de lockers</p>
+                <input id="camposForm" type="text" placeholder ="&#9000; Usuario" required name="usuario">
+                <input id="camposForm" type="password" placeholder="&#128477; Contraseña" required name="clave">
+                <input id="camposForm" type="submit" value="INGRESAR" name="ingresar">
+                <p id="resetPass"><a href="enviarPass.php">Recuperar Contraseña</a></p>
+            </form>    
+        </div>
     </body>
 </html>
