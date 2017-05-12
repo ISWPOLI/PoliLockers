@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>PROFESOR</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
+        <link rel="stylesheet" href="css/fontello.css">
+        <link rel="stylesheet" href="css/estiloProf.css">
+        <link rel="stylesheet" href="css/estiloMenu.css">
+        <script>
+            function capturar(){
+                
+                var lck=document.getElementById('lockers').value;  
+                
+                window.location.href="profHacerSolicitud.php";
+                
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="contenedor">
+                <h1 class="icon-admin"> Profesor</h1>
+                <input type="checkbox" id="menu-bar">
+                <label class="icon-menu "for="menu-bar"></label>
+                <nav class="menu">
+                    <a class="icon-locker" href="SolicitudLocker.html"> Solicitar Locker</a>
+                    <a class="icon-salir" href="index.html"> Salir</a>
+                </nav>
+            </div>
+            <h2 align="center">Sitio para el PROFESOR</h2>
+            <SELECT NAME="bloques">
+                <option>Seleccione un Bloque...</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="G">G</option>
+                <option value="H">H</option>
+                <option value="I">I</option>
+                <option value="J">J</option>
+                <option value="K">K</option>
+                <option value="L">L</option>
+            </SELECT>
+            <SELECT NAME="lockers">
+                <option>Seleccione un locker...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </SELECT>
+            <form action="profHacerSolicitud.php" method="post">
+                <input type="button" name="Solicitar" value="SOLICITAR" onclick="capturar()"/>
+            </form>
+        </header>
+    </body>
+</html>
