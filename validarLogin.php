@@ -6,16 +6,23 @@ $clave=$_POST['clave'];
 $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
 
 if($_POST[ingresar]){
-    $consulta="SELECT * FROM usuarios WHERE usuario='$usuario' and clave='$clave'";
+    $consulta="SELECT rol FROM usuarios WHERE usuario='$usuario' and clave='$clave'";
     $resultado=mysqli_query($conexion, $consulta);
 
-    $filas=mysqli_num_rows($resultado);
+    $rol=mysqli_fetch_row($resultado);
     
-    if($filas==1){
-        header("location:admin.html");            
+    if($rol[0] == 'Administrador'){
+        header("location:admin.html");                
+    }else if($rol[0] == 'Decano'){
+        header("location:dec.php");                
+    }else if($rol[0] == 'Coordinador'){
+        header("location:coor.html");                
+    }else if($rol[0] == 'Profesor'){
+        header("location:prof.html");                
     }else{
-        header("location:index.html");
+        header("location:index.html");    
     }
+    
 }
 if($_POST[reestablecer]){
     header("location:index.html");
