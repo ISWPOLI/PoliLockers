@@ -15,12 +15,40 @@
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu "for="menu-bar"></label>
                 <nav class="menu">
-                    <a class="icon-profesor" href="adminUser.html"> Administrar Usuarios</a>
-                    <a class="icon-locker" href="adminLocker.html"> Administrar Lockers</a>
+                    <a class="icon-admin" > -</a>
                     <a class="icon-salir" href="index.html"> Salir</a>
                 </nav>
             </div>
-            <h2 align="center">En este sitio podra administrar los usuarios y lockers registrados en el sistema, Bienvenido!</h2>
+            <div class="panelPrincipal" width=100% height=100%>
+                <div class="panelIzq" width=100% height=100%>
+                    <h2>Administrar Usuarios</h2>
+                    <form action="validarInfoUser.php" method="post">
+                        <input class="input" type="text" name="txtUser" placeholder="Usuario"><br>
+                        <input class="input" type="text" name="txtPass" placeholder="Contraseña"><br>
+                        <input class="input" type="text" name="txtNombre" placeholder="Nombre"><br>
+                        <input class="input" type="text" name="txtRol" placeholder="Rol"><br>
+                        <input class="input" type="text" name="txtCorreo" placeholder="Correo"><br>
+                        <input class="btnCrud" type="submit" name="Agregar" value="AGREGAR"/>
+                        <input class="btnCrud" type="submit" name="Borrar" value="BORRAR"/>
+                        <input class="btnCrud" type="submit" name="Actualizar" value="ACTUALIZAR"/>
+                        <input type="submit" name="Listar" value="LISTAR"/>
+                    </form>
+                </div>
+                <div class="panelDer" width=100% height=100%>
+                    <h2>Administrar Lockers</h2>
+                    <form action="validarInfoLock.php" method="post">
+                        <input type="text" name="txtId" placeholder="Id"><br>
+                        <input type="text" name="txtBloque" placeholder="Bloque"><br>
+                        <input type="text" name="txtEstado" placeholder="Estado"><br>
+                        <input type="text" name="txtCoordinador" placeholder="Coordinador"><br>
+                        <input type="text" name="txtDocente" placeholder="Docente"><br>        
+                        <input class="btnCrud" type="submit" name="Agregar" value="AGREGAR"/>
+                        <input class="btnCrud" type="submit" name="Borrar" value="BORRAR"/>
+                        <input class="btnCrud" type="submit" name="Actualizar" value="ACTUALIZAR"/>
+                        <input type="submit" name="Listar" value="LISTAR"/>
+                    </form>                    
+                </div>  
+            </div>
         </header>
     </body>
 </html>
