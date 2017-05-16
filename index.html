@@ -5,6 +5,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
         <link rel="stylesheet" href="css/estilos.css">
+        <script type="text/javascript">
+            var msj = "En breve le enviaremos un correo con la información para que pueda acceder al sistema.\n\nGracias."
+            function resetP() {
+                alert(msj);
+            }
+        </script>
     </head>
     <body>
         <div>
@@ -17,7 +23,7 @@
                 <input id="camposForm" type="text" placeholder ="&#9000; Usuario" required name="usuario">
                 <input id="camposForm" type="password" placeholder="&#128477; Contraseña" required name="clave">
                 <input id="camposForm" type="submit" value="INGRESAR" name="ingresar">
-                <p id="resetPass"><a href="enviarPass.php">Recuperar Contraseña</a></p>
+                <p id="resetPass" onclick="resetP()"><a href="enviarPass.php" >Recuperar Contraseña</a></p>
             </form>    
         </div>
     </body>
