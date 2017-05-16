@@ -11,7 +11,7 @@
 
 body {
     font-family: 'Oswald', sans-serif;
-    background: Tomato;
+    background: #fff;
 }
 
 header {
@@ -33,7 +33,29 @@ header {
 h1 {
     float: left;
 }
+#texto_mapa {
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
 
 header .contenedor{
     display: table;
+}
+
+.panelPrincipal {
+    background: rgb(16, 48, 92);
+    margin-top: 1%;
+    margin-left: 8%;
+    margin-right: 8%;
+    display: block;
+    height: 600px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+}
+#mapaPoli {
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
