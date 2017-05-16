@@ -13,34 +13,16 @@
         <title>DECANO</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
-        <script>
-            function capturar()
-            {
-                // obtenemos e valor por el numero de elemento
-                //var porElementos=document.forms["form1"].elements[4].value;
-                // Obtenemos el valor por el id
-                //var porId=document.getElementById("seleccion").value;
-                // Obtenemos el valor por el Nombre
-                //var porNombre=document.getElementsByName("seleccion")[0].value;
-                // Obtenemos el valor por el tipo de tag
-                //var porTagName=document.getElementsByTagName("select")[0].value;
-                // Obtenemos el valor por el nombre de la clase
-                //var porClassName=document.getElementsByClassName("formulario_select")[0].value;
-                var letra=document.getElementById("b_l").value;
-                var coord=document.getElementById("c").value;
-                <?php
-                    $conexion4=mysqli_connect("localhost", "root", "", "bdlockers");
-                    $consulta4="UPDATE bloque SET coordinador='coord' WHERE letra_bloque='letra'";
-                    $registros4=mysqli_query($conexion, $consulta3);   
-                    
-                ?>
-                
-            }
-        </script>
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estiloDec.css">
         <link rel="stylesheet" href="css/estiloMenu.css">
-        
+        <script type="text/javascript">
+            function capturar(){
+                var letra=document.getElementById("l_b").value;
+                var coord=document.getElementById("c").value;
+                window.location.href = "asignCoord.php?l="+letra+"&c="+coord;
+            }
+        </script>
     </head>
     <body>
         <header>
@@ -88,9 +70,9 @@
                             }
                         ?>
                     </select><BR>
-                    <input type="submit" name="asignar" value="ASIGNAR" onclick="capturar()"/><BR>
-                    
+                    <input onclick="capturar()" type="submit" name="asignar" value="ASIGNAR" /><BR>
                 </div>  
+            </div>
         </header>
     </body>
 </html>
