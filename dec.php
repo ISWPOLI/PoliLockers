@@ -13,6 +13,7 @@
         <title>DECANO</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estiloDec.css">
         <link rel="stylesheet" href="css/estiloMenu.css">
@@ -28,19 +29,22 @@
         <header>
             <div class="contenedor">
                 <h1 class="icon-decano">Decano</h1>
+                <h1 class="icon-decano" id="resp"> D</h1>
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu "for="menu-bar"></label>
                 <nav class="menu">
-                    <a class="icon-decano"> -</a>
                     <a class="icon-salir" href="index.html"> Salir</a>
                 </nav>
             </div>
-            <div style="overflow:auto" class="panelPrincipal" width=100% height=100%>
+        </header>
+        <div class="container panelPrincipal">
+            <div class="col-xs-12 col-md-6">
                 <div class="panelIzq" width=100% height=100%>
                     <h2 class="titulo">Bloques</h2>
-                <table border="1">
+                    <HR align="CENTER" size="2" width="75%" color="white" noshade>
+                <table class="table table-striped tabla" border="1">
                     <tr>
-                        <td>BLOQUE</td><td>COORDINADOR</td>
+                        <td><strong>BLOQUE</strong></td><td><strong>COORDINADOR</strong></td>
                     </tr>
                     <?php
                         while($row1 = $registros->fetch_array(MYSQLI_BOTH)){
@@ -52,8 +56,11 @@
                     ?>
                 </table>
                 </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
                 <div class="panelDer" width=100% height=100%>
                     <h2 class="titulo">Asignar Coordinador</h2>
+                    <HR align="CENTER" size="2" width="75%" color="white" noshade>
                     <select class="select" id="l_b">
                         <option>Seleccione un Bloque...</option>
                         <?php 
@@ -73,6 +80,6 @@
                     <input onclick="capturar()" type="submit" name="asignar" value="ASIGNAR" /><BR>
                 </div>  
             </div>
-        </header>
+        </div>
     </body>
 </html>
