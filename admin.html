@@ -4,6 +4,7 @@
         <title>ADMINISTRADOR</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estilosAdm.css">
         <link rel="stylesheet" href="css/estiloMenu.css">
@@ -15,40 +16,58 @@
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu "for="menu-bar"></label>
                 <nav class="menu">
-                    <a class="icon-admin" > -</a>
                     <a class="icon-salir" href="index.html"> Salir</a>
                 </nav>
             </div>
-            <div class="panelPrincipal" width=100% height=100%>
-                <div class="panelIzq" width=100% height=100%>
+        </header>
+        <div class="container panelPrincipal">    
+            <div class="col-xs-12 col-md-6">
+               <div class="panelIzq">
                     <h2>Administrar Usuarios</h2>
-                    <form action="validarInfoUser.php" method="post">
+                    <HR align="CENTER" size="2" width="75%" color="white" noshade>
+                <form action="validarInfoUser.php" method="post">
                         <input class="input" type="text" name="txtUser" placeholder="Usuario"><br>
                         <input class="input" type="text" name="txtPass" placeholder="Contraseña"><br>
                         <input class="input" type="text" name="txtNombre" placeholder="Nombre"><br>
                         <input class="input" type="text" name="txtRol" placeholder="Rol"><br>
                         <input class="input" type="text" name="txtCorreo" placeholder="Correo"><br>
-                        <input class="btnCrud" type="submit" name="Agregar" value="AGREGAR"/>
-                        <input class="btnCrud" type="submit" name="Borrar" value="BORRAR"/>
-                        <input class="btnCrud" type="submit" name="Actualizar" value="ACTUALIZAR"/>
+                        <div class="col-xs-12 col-sm-4">
+                            <input class="btnCrud" type="submit" name="Agregar" value="AGREGAR"/>    
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <input class="btnCrud" type="submit" name="Borrar" value="BORRAR"/>    
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <input class="btnCrud" type="submit" name="Actualizar" value="ACTUALIZAR"/>    
+                        </div>
                         <input type="submit" name="Listar" value="LISTAR"/>
-                    </form>
-                </div>
-                <div class="panelDer" width=100% height=100%>
+                </form>   
+               </div>
+                
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="panelDer">
                     <h2>Administrar Lockers</h2>
+                    <HR align="CENTER" size="2" width="75%" color="white" noshade>
                     <form action="validarInfoLock.php" method="post">
                         <input type="text" name="txtId" placeholder="Id"><br>
                         <input type="text" name="txtBloque" placeholder="Bloque"><br>
-                        <input type="text" name="txtEstado" placeholder="Estado"><br>
-                        <input type="text" name="txtCoordinador" placeholder="Coordinador"><br>
-                        <input type="text" name="txtDocente" placeholder="Docente"><br>        
-                        <input class="btnCrud" type="submit" name="Agregar" value="AGREGAR"/>
-                        <input class="btnCrud" type="submit" name="Borrar" value="BORRAR"/>
-                        <input class="btnCrud" type="submit" name="Actualizar" value="ACTUALIZAR"/>
+                        <input type="text" name="txtUbicacion" placeholder="Ubicacion"><br>
+                        <input type="text" name="txtDescripcion" placeholder="Descripcion"><br>
+                        <div class="col-xs-12 col-sm-4">
+                            <input class="btnCrud" type="submit" name="Agregar" value="AGREGAR"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <input class="btnCrud" type="submit" name="Borrar" value="BORRAR"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <input class="btnCrud" type="submit" name="Actualizar" value="ACTUALIZAR"/>
+                        </div>     
                         <input type="submit" name="Listar" value="LISTAR"/>
-                    </form>                    
-                </div>  
-            </div>
-        </header>
+                    </form>   
+                </div>
+            </div>    
+        </div>
+        
     </body>
 </html>

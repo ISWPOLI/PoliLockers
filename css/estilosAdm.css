@@ -54,7 +54,7 @@ input[type="submit"]:active {
 }
 
 .btnCrud {
-    width: 32.5%;
+    
     font-size: 15px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -70,31 +70,34 @@ h1 {
 }
 h2 {
     text-align: center;
+    color: #fff;
 }
 header .contenedor{
     display: table;
 }
 .panelPrincipal {
-    margin-top: 1%;
-    height: 500px;
+    margin-top: 100px;
+    height: auto;
     padding-bottom: 5px;
     /*overflow: scroll;*/
 }
 .panelIzq {
     background: rgb(16, 48, 92);
-    float: left;
-    width: 48.5%;
-    margin-right: 0.5%;
+    width: 98%;
     margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 2%;
     border-radius: 10px;
+    padding-bottom: 5px;
 }
 .panelDer {
     background: rgb(16, 48, 92);
-    float: right;
-    width: 48.5%;
+    width: 98%;
+    margin-left: 1%;
     margin-right: 1%;
-    margin-left: 0.5%;
+    margin-bottom: 2%;
     border-radius: 10px;
+    padding-bottom: 5px;
 }
 
  
