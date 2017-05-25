@@ -11,7 +11,7 @@
 
 body {
     font-family: 'Oswald', sans-serif;
-    background: YellowGreen;
+    background: #fff;
 }
 
 header {
@@ -36,4 +36,127 @@ h1 {
 
 header .contenedor{
     display: table;
+}
+.PL{
+    background: #fff;
+    border: 5px solid rgb(16, 48, 92);
+    margin-top: 100px;
+    margin-bottom: 20px;
+    display: block;
+    height: auto;
+    padding-bottom: 5px;
+    border-radius: 10px;
+}
+#titulo{
+    text-align: center;
+    color: rgb(16, 48, 92);
+    margin-left: 10%;
+    margin-right: 10%;
+    
+}
+.pInfo {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;   
+    width: 90%;
+    margin-bottom: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#linea {
+    border: 1px solid rgb(16, 48, 92);
+}
+.wait {
+    background: yellow;
+    border-radius: 10px;
+    text-align: center;
+    color: black;
+    
+}
+.check {
+    background: green;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+}
+.reject {
+    background: red;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+}
+.finish {
+    background: blue;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+}
+input[type="submit"] {
+    background: #ff6600;
+    border: 0;
+    color: #FFFFFF;
+    opacity: 0.9;
+    border-radius: 10px;
+    width: 100%;   
+    font-weight: 700;
+}
+input[type="submit"]:hover  {
+    opacity: 1;
+}
+input[type="submit"]:active {
+    transform: scale(0.95);
+}
+.r {
+    background: rgb(16, 48, 92)!important;
+}
+#dis_none {
+    display: none;
+}
+.resp {
+    width: 80%;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+form {
+    margin-bottom: 10px;
+    background: rgb(16, 48, 92);
+    border-radius: 10px;
+    padding: 10px;
+}
+.tit {
+    color: #ff6600;
+}
+.res {
+    color: white;
+}
+@media(max-width:770px){
+    .resp {
+        display: block;
+    }       
+    #t_coord {
+        display: none;
+    }
+    input[type="submit"] {
+        width: 50%;
+    }
+    .r {
+        background: white !important;
+        color: black !important;
+    }
+}
+#resp {
+    display: none;
+}
+@media(max-width:400px){
+    h1 {
+        display: none;
+    }   
+    #resp {
+        display: inherit;
+    }
 }
