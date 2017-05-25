@@ -141,9 +141,7 @@ form {
     #t_coord {
         display: none;
     }
-    input[type="submit"] {
-        width: 50%;
-    }
+    
     .r {
         background: white !important;
         color: black !important;
@@ -159,4 +157,18 @@ form {
     #resp {
         display: inherit;
     }
+}
+.btn {
+    background: #ff6600;
+    border: 0;
+    color: #FFFFFF;
+    opacity: 0.9;
+    border-radius: 10px;
+    font-weight: 700;
+    margin: 10px;
+    padding: 10px;
+}
+#r {
+    background: white !important;
+    color: rgb(16, 48, 92) !important;
 }

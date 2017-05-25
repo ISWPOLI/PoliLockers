@@ -64,7 +64,7 @@
                                             <label class='tit'>USUARIO :&nbsp</label><label class='res'>$user</label><BR>
                                             <label class='tit'>FECHA INICIAL :&nbsp</label><label class='res'>$fini</label><BR>
                                             <label class='tit'>FECHA FINAL :&nbsp</label><label class='res'>$ffin</label><BR>
-                                            <a href='cerrarSolicitud.php?respuesta=FC&id=$id&user=$u&lock=$locker'><input class='r' id='$dis' type='submit' value='FINALIZAR'/></a>
+                                            <a href='cerrarSolicitud.php?respuesta=FC&id=$id&user=$u&lock=$locker'><label class='btn r'  id='$dis'>FINALIZAR</label></a>
                                         </form>";                             
                             }
                         ?>

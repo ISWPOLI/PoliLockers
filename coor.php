@@ -63,8 +63,8 @@
                                             <label class='tit'>USUARIO :&nbsp</label><label class='res'>$user</label><BR>
                                             <label class='tit'>FECHA INICIAL :&nbsp</label><label class='res'>$fini</label><BR>
                                             <label class='tit'>FECHA FINAL :&nbsp</label><label class='res'>$ffin</label><BR>
-                                            <a href='cerrarSolicitud.php?respuesta=A&id=$id&user=$u&lock=$locker'><input type='submit' value='ACEPTAR'/></a><BR>
-                                            <a href='cerrarSolicitud.php?respuesta=R&id=$id&user=$u&lock=$locker'><input class='r' type='submit' value='RECHAZAR'/></a><BR>
+                                            <a href='cerrarSolicitud.php?respuesta=A&id=$id&user=$u&lock=$locker'><label class='btn'>ACEPTAR</label></a><BR>
+                                            <a href='cerrarSolicitud.php?respuesta=R&id=$id&user=$u&lock=$locker'><label class='btn' id='r'>RECHAZAR</label></a><BR>
                                         </form>";                             
                             }
                         ?>
