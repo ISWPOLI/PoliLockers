@@ -15,3 +15,39 @@ table {
     background: #fff;    
     border-radius: 10px;
 }
+td {
+    font-size: 700;
+}
+div {
+    text-align: center;
+}
+form {
+    background: white;
+    border-radius: 10px;
+    margin: 10px;
+}
+#f_users, #f_lockers {
+    display: none;
+}
+.tit {
+    color: #ff6600;
+}
+.res {
+    color: rgb(16, 48, 92);
+}
+@media(max-width:800px){
+    #t_lockers {
+        display: none;
+    }
+    #f_lockers {
+        display: inherit;
+    }
+}
+@media(max-width:650px){
+    #t_users {
+        display: none;
+    }
+    #f_users {
+        display: inherit;
+    }
+}
