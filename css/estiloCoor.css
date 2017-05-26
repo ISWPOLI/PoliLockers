@@ -94,6 +94,13 @@ header .contenedor{
     color: white;
     font-weight: 700;
 }
+.cancel {
+    background: black;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+}
 input[type="submit"] {
     background: #ff6600;
     border: 0;

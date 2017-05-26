@@ -2,7 +2,7 @@
     display: none;
 }
 header {
-    border-bottom: 2px solid rgb(255, 255, 255);    
+    border-bottom: 2px solid rgb(255, 255, 255);   
 }
 
 header label {
@@ -26,7 +26,6 @@ header label {
 .menu a {
     display: block;
     color: rgb(255, 255, 255);
-    height: 60px;
     text-decoration: none;
     padding: 20px;
     border-bottom: 2px solid rgb(255, 255, 255);
