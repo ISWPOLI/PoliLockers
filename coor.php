@@ -24,6 +24,7 @@
                         echo "  <a class='icon-profesor' href='historialCoord.php?user=$u'> Historial de solicitudes</a>
                                 ";
                     ?>
+                    <a class="icon-admin" href="reportesCoord.php?fi=&ff="> Reportes</a>
                     <a class="icon-salir" href="index.html"> Salir</a>
                 </nav>
             </div>
