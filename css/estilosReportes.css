@@ -1,0 +1,21 @@
+.dis_none {
+    display: none;
+}
+.bloques {
+    background: white;
+    border-radius: 10px;
+    margin: 2px;
+}
+.bloques2 {
+    background: white;
+    border-radius: 10px;
+    margin: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+h3 {
+    color: white;
+}
+div h1{
+    color: black;
+}

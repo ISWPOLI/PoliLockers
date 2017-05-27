@@ -33,6 +33,7 @@
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu "for="menu-bar"></label>
                 <nav class="menu">
+                   <a class="icon-decano" href="reportesDec.php?fi=&ff="> Reportes</a>
                     <a class="icon-salir" href="index.html"> Salir</a>
                 </nav>
             </div>
