@@ -22,9 +22,9 @@
                 <nav class="menu">
                    <?php
                         echo "  <a class='icon-profesor' href='historialProf.php?user=$u'> Historial de solicitudes </a>
-                                <a class='icon-profesor' href='prof.php?user=$u'> Solicitar locker</a>
                                 ";
                     ?>
+                    <a class="icon-profesor" href="reportesProf.php?fi=&ff="> Reportes</a>
                     <a class="icon-salir" href="index.html"> Salir</a>
                 </nav>
             </div>
@@ -36,29 +36,29 @@
                 <img  id="mapaPoli"src="./images/mapa_poli.png" alt="Mapa BLoques IUPG-Polilockers" usemap="#mapa">
                 <?php
                     echo "  <form id='f_res'>
-                                <a href='vistaLockers.php?bloque=A&user=$u'><label class='btn'>BLOQUE A</label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=A&user=$u'><label class='btn'>BLOQUE A</label></a>
                                 <BR><BR>
-                                <a href='vistaLockers.php?bloque=B&user=$u'><label class='btn'>BLOQUE B</label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=B&user=$u'><label class='btn'>BLOQUE B</label></a>
                                 <BR><BR>
-                                <a href='vistaLockers.php?bloque=C&user=$u'><label class='btn'>BLOQUE C</label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=C&user=$u'><label class='btn'>BLOQUE C</label></a>
                                 <BR><BR>
-                                <a href='vistaLockers.php?bloque=D&user=$u'><label class='btn'>BLOQUE D</label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=D&user=$u'><label class='btn'>BLOQUE D</label></a>
                                 <BR><BR>
-                                <a href='vistaLockers.php?bloque=E&user=$u'><label class='btn'>BLOQUE E</label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=E&user=$u'><label class='btn'>BLOQUE E</label></a>
                                 <BR><BR>
-                                <a href='vistaLockers.php?bloque=F&user=$u'><label class='btn'>BLOQUE F</label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=F&user=$u'><label class='btn'>BLOQUE F</label></a>
                                 <BR><BR>
-                                <a href='vistaLockers.php?bloque=G&user=$u'><label class='btn'>BLOQUE G</label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=G&user=$u'><label class='btn'>BLOQUE G</label></a>
                                 <BR><BR>
-                                <a href='vistaLockers.php?bloque=H&user=$u'><label class='btn'>BLOQUE H<label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=H&user=$u'><label class='btn'>BLOQUE H<label></a>
                                 <BR><BR>
-                                <a href='vistaLockers.php?bloque=I&user=$u'><label class='btn'>BLOQUE I</label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=I&user=$u'><label class='btn'>BLOQUE I</label></a>
                                 <BR><BR>
-                                <a href='vistaLockers.php?bloque=J&user=$u'><label class='btn'>BLOQUE J</label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=J&user=$u'><label class='btn'>BLOQUE J</label></a>
                                 <BR><BR>
-                                <a href='vistaLockers.php?bloque=K&user=$u'><label class='btn'>BLOQUE K</label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=K&user=$u'><label class='btn'>BLOQUE K</label></a>
                                 <BR><BR>
-                                <a href='vistaLockers.php?bloque=L&user=$u'><label class='btn'>BLOQUE L</label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=L&user=$u'><label class='btn'>BLOQUE L</label></a>
                                 <BR><BR>
                             </form>";    
                 ?>
