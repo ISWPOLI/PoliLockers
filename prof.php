@@ -22,9 +22,10 @@
                 <nav class="menu">
                    <?php
                         echo "  <a class='icon-profesor' href='historialProf.php?user=$u'> Historial de solicitudes </a>
+                                <a class='icon-profesor' href='reportesProf.php?user=$u&fi=&ff='> Reportes</a>
                                 ";
                     ?>
-                    <a class="icon-profesor" href="reportesProf.php?fi=&ff="> Reportes</a>
+                    
                     <a class="icon-salir" href="index.html"> Salir</a>
                 </nav>
             </div>
