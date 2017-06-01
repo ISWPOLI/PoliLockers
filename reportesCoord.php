@@ -1,14 +1,77 @@
 <?php
+    $u=$_GET['user'];
     $fIni=$_GET['fi'];
     $fFin=$_GET['ff'];
 
     $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
 
     if($fIni!="" && $fFin!=""){
-           
-    }else{
+//-----------------------------------------------------------------------------------------------------BLOQUE A
+        $consultaEEA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (u_coord='$u' AND estado='EN ESPERA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (u_coord='$u' AND estado='EN ESPERA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultEEA = $conexion->query($consultaEEA);
+        $countEEA = $resultEEA->fetch_assoc();
+        $registrosEEA = $countEEA['NumRows'];
         
+        $consultaAA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (u_coord='$u' AND estado='APROBADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (u_coord='$u' AND estado='APROBADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultAA = $conexion->query($consultaAA);
+        $countAA = $resultAA->fetch_assoc();
+        $registrosAA = $countAA['NumRows'];
+        
+        $consultaRA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (u_coord='$u' AND estado='RECHAZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (u_coord='$u' AND estado='RECHAZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultRA = $conexion->query($consultaRA);
+        $countRA = $resultRA->fetch_assoc();
+        $registrosRA = $countRA['NumRows'];
+        
+        $consultaCA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (u_coord='$u' AND estado='CANCELADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (u_coord='$u' AND estado='CANCELADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultCA = $conexion->query($consultaCA);
+        $countCA = $resultCA->fetch_assoc();
+        $registrosCA = $countCA['NumRows'];
+        
+        $consultaFA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (u_coord='$u' AND estado='FINALIZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (u_coord='$u' AND estado='FINALIZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultFA = $conexion->query($consultaFA);
+        $countFA = $resultFA->fetch_assoc();
+        $registrosFA = $countFA['NumRows'];        
+    }else{
+        //-----------------------------------------------------------------------------------------------------BLOQUE A
+        $consultaEEA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE u_coord='$u' AND estado='EN ESPERA'";
+        $resultEEA = $conexion->query($consultaEEA);
+        $countEEA = $resultEEA->fetch_assoc();
+        $registrosEEA = $countEEA['NumRows'];
+        
+        $consultaAA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE u_coord='$u' AND estado='APROBADA'";
+        $resultAA = $conexion->query($consultaAA);
+        $countAA = $resultAA->fetch_assoc();
+        $registrosAA = $countAA['NumRows'];
+        
+        $consultaRA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE u_coord='$u' AND estado='RECHAZADA'";
+        $resultRA = $conexion->query($consultaRA);
+        $countRA = $resultRA->fetch_assoc();
+        $registrosRA = $countRA['NumRows'];
+        
+        $consultaCA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE u_coord='$u' AND estado='CANCELADA'";
+        $resultCA = $conexion->query($consultaCA);
+        $countCA = $resultCA->fetch_assoc();
+        $registrosCA = $countCA['NumRows'];
+        
+        $consultaFA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE u_coord='$u' AND estado='FINALIZADA'";
+        $resultFA = $conexion->query($consultaFA);
+        $countFA = $resultFA->fetch_assoc();
+        $registrosFA = $countFA['NumRows'];
     }
+    //-----------------------------------------------------------------------------------------------------BLOQUE A LOCKERS LIBRES/OCUPADOS
+    $consult="SELECT nombre FROM usuarios WHERE usuario='$u'";
+    $result=mysqli_query($conexion, $consult);
+    $name=mysqli_fetch_row($result);
+    
+    $consultaAL2 ="SELECT COUNT(*) AS NumRows FROM lockers WHERE coordinador='$name[0]' AND ocupado=0";
+    $resultAL2 = $conexion->query($consultaAL2);
+    $countAL2 = $resultAL2->fetch_assoc();
+    $registrosAL2 = $countAL2['NumRows'];
+    
+    $consultaAO2 ="SELECT COUNT(*) AS NumRows FROM lockers WHERE coordinador='$name[0]' AND ocupado=1";
+    $resultAO2 = $conexion->query($consultaAO2);
+    $countAO2 = $resultAO2->fetch_assoc();
+    $registrosAO2 = $countAO2['NumRows'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,23 +82,69 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/estiloListas.css">
         <link rel="stylesheet" href="css/estilosReportes.css">
+        <script type="text/javascript">
+            function capturar(){
+                var fIni=document.getElementById("fini").value;
+                var fFin=document.getElementById("ffin").value;
+                var user=document.getElementById("use").value;
+                
+                if(fIni > fFin || fIni == fFin || fIni=="" || fFin==""){
+                    var msj = "Porfavor verifique el rango de fechas.\n\nGracias."
+                    alert(msj);   
+                }else{
+                    window.location.href = "reportesCoord.php?user="+user+"&fi="+fIni+"&ff="+fFin;    
+                }
+            }
+        </script>
     </head>
     <body>
         <header>
             <h1>REPORTE #1 - Estado de las solicitudes</h1>
             <HR align="CENTER" size="2" width="75%" color="white" noshade>
         </header>
+        <div class="col-xs-12">
+            <div class="pInfo">
+               <h3 class="eti "align="center">Para generar este reporte para un rango de fechas especifico, seleccione :</h3>
+                <div class="col-xs-12 col-sm-6">
+                    <form name="fcalen"> 
+                        <p class="etiquetassolicitud">FECHA INICIAL</p>    
+                        <input type="date" id="fini">
+                    </form>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <form name="fcalen"> 
+                        <p class="etiquetassolicitud">FECHA FINAL</p>
+                        <input type="date" id="ffin">
+                    </form>
+                </div>
+                <input class="botonV" onclick="capturar()" type="submit" value="VER" /><BR>
+            </div>
+        </div>
         <div class="container">
                <div class="main row">
                     <?php
                         if($fIni!="" && $fFin!=""){
-                            echo "<h3>A continuación se muestran todas solicitudes EN ESPERA, ACEPTADAS, RECHAZADAS, FINALIZADAS Y CANCELADAS por cada bloque que se han hecho entre ".$fIni." y ".$fFin.".</h3>";
+                            echo "<h3>A continuación se muestran todas las solicitudes EN ESPERA, ACEPTADAS, RECHAZADAS, FINALIZADAS Y CANCELADAS del bloque que supervisa y que se han hecho entre <BR><BR> <p class='fecha'>>   ".$fIni." ... ".$fFin."   <</p></h3>";
                         }else{
-                            echo "<h3>A continuación se muestran todas solicitudes EN ESPERA, ACEPTADAS, RECHAZADAS, FINALIZADAS Y CANCELADAS por cada bloque que se han hecho en la historia del sistema.</h3>";
+                            echo "<h3>A continuación se muestran todas las solicitudes EN ESPERA, ACEPTADAS, RECHAZADAS, FINALIZADAS Y CANCELADAS del bloque que supervisa y que se han hecho en la historia del sistema.</h3>";
                         }
                     ?>
-                    
+                    <br>
+                        <p class="conv"><span class="wait">O-</span> Solicitudes EN ESPERA</p>
+                        <p class="conv"><span class="acept">O-</span> Solicitudes ACEPTADAS</p>   
+                        <p class="conv"><span class="reject">O-</span>Solicitudes RECHAZADAS</p>   
+                        <p class="conv"><span class="finish">O-</span>Solicitudes FINALIZADAS</p>   
+                        <p class="conv"><span class="cancel">O-</span> Solicitudes CANCELADAS</p>   
+                        <p class="conv"><span class="info">O-</span> NO EXISTEN SOLICITUDES SOLICITUDES</p>   
+                    <br>
                     <script src="js/Chart.js"></script>
+                    <div class="col-xs-12" id="canvas-holder">
+                        <div class="bloques">
+                            <h1>MIS SOLICITUDES</h1>
+                            <canvas id="bloqueA" width="300" height="300"></canvas>    
+                       </div>
+                    </div>
+                    
                     <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1 dis_none" id="canvas-holder">
                         <canvas id="chart-area" width="300" height="300"></canvas>
                         <canvas id="chart-area2" width="300" height="300"></canvas>
@@ -46,10 +155,21 @@
         </div>
         <h1>REPORTE #2 - Estado de los Lockers</h1>
         <HR align="CENTER" size="2" width="75%" color="white" noshade>               
-        <h3 align="center">A continuación se muestra la cantidad de lockers DISPONIBLES y OCUPADOS en toda la universidad.</h3>
+        <h3 align="center">A continuación se muestra la cantidad de lockers DISPONIBLES y OCUPADOS en el bloque que usted supervisa.</h3>
+        <br>
+            <p class="conv"><span class="acept">O-</span> Lockers DISPONIBLES</p>   
+            <p class="conv"><span class="reject">O-</span> Lockers OCUPADOS</p>   
+        <br>
         <div class="container">
             <div class="main row">
                 <script src="js/Chart.js"></script>
+                <div class="col-xs-12" id="canvas-holder">
+                           <div class="bloques">
+                                <h1>MIS LOCKERS</h1>
+                                <canvas id="bloqueA2" width="300" height="300"></canvas>    
+                           </div>
+                        </div>
+                        
                         <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1 dis_none" id="canvas-holder">
                             <canvas id="chart-area" width="300" height="300"></canvas>
                             <canvas id="chart-area2" width="300" height="300"></canvas>
@@ -57,9 +177,23 @@
                             <canvas id="chart-area4" width="600" height="300"></canvas>
                         </div>
             </div>
+            <br><br>
         </div>
         <form class="dis_none">
-                
+            <?php
+                echo    "   <input id='eea' value='$registrosEEA'>
+                            <input id='aa' value='$registrosAA'>
+                            <input id='ra' value='$registrosRA'>
+                            <input id='ca' value='$registrosCA'>
+                            <input id='fa' value='$registrosFA'>
+                            <br>
+                            
+                            <input id='al2' value='$registrosAL2'>
+                            <input id='ao2' value='$registrosAO2'>
+                            
+                            <input id='use' value='$u'>
+                        ";
+            ?>    
         </form>
         <script>
             var prov= document.getElementById("eea").value;
@@ -79,135 +213,6 @@
                     {value: F_A,color: "#0000ff",highlight: "#00008B",label: "FINALIZADAS"}
               ];
     
-            var prov = document.getElementById("eeb").value;
-            var EE_B = parseInt(prov);
-            var prov = document.getElementById("ab").value;
-            var A_B = parseInt(prov);
-            var prov = document.getElementById("rb").value;
-            var R_B = parseInt(prov);
-            var prov = document.getElementById("cb").value;
-            var C_B = parseInt(prov);
-            var prov = document.getElementById("fb").value;
-            var F_B = parseInt(prov);
-            var pieDataB= [{value: EE_B,color: "#ffff00",highlight: "#FFD700",label: "EN ESPERA"},
-                            {value: A_B,color: "#00ff00",highlight: "#006400",label: "APROBADAS"},
-                            {value: R_B,color: "#ff0000",highlight: "#8B0000",label: "RECHAZADAS"},				
-                            {value: C_B,color: "#000000",highlight: "#A9A9A9",label: "CANCELADAS"},
-                            {value: F_B,color: "#0000ff",highlight: "#00008B",label: "FINALIZADAS"}
-                      ];
-            
-            var prov = document.getElementById("eec").value;
-            var EE_C = parseInt(prov);
-            var prov = document.getElementById("ac").value;
-            var A_C = parseInt(prov);
-            var prov = document.getElementById("rc").value;
-            var R_C = parseInt(prov);
-            var prov = document.getElementById("cc").value;
-            var C_C = parseInt(prov);
-            var prov = document.getElementById("fc").value;
-            var F_C = parseInt(prov);
-            var pieDataC= [{value: EE_C,color: "#ffff00",highlight: "#FFD700",label: "EN ESPERA"},
-                            {value: A_C,color: "#00ff00",highlight: "#006400",label: "APROBADAS"},
-                            {value: R_C,color: "#ff0000",highlight: "#8B0000",label: "RECHAZADAS"},				
-                            {value: C_C,color: "#000000",highlight: "#A9A9A9",label: "CANCELADAS"},
-                            {value: F_C,color: "#0000ff",highlight: "#00008B",label: "FINALIZADAS"}
-                      ];
-            var prov = document.getElementById("eed").value;
-            var EE_D = parseInt(prov);
-            var prov = document.getElementById("ad").value;
-            var A_D = parseInt(prov);
-            var prov = document.getElementById("rd").value;
-            var R_D = parseInt(prov);
-            var prov = document.getElementById("cd").value;
-            var C_D = parseInt(prov);
-            var prov = document.getElementById("fd").value;
-            var F_D = parseInt(prov);
-            var pieDataD= [{value: EE_D,color: "#ffff00",highlight: "#FFD700",label: "EN ESPERA"},
-                            {value: A_D,color: "#00ff00",highlight: "#006400",label: "APROBADAS"},
-                            {value: R_D,color: "#ff0000",highlight: "#8B0000",label: "RECHAZADAS"},				
-                            {value: C_D,color: "#000000",highlight: "#A9A9A9",label: "CANCELADAS"},
-                            {value: F_D,color: "#0000ff",highlight: "#00008B",label: "FINALIZADAS"}
-                      ];
-            var prov = document.getElementById("eee").value;
-            var EE_E = parseInt(prov);
-            var prov = document.getElementById("ae").value;
-            var A_E = parseInt(prov);
-            var prov = document.getElementById("re").value;
-            var R_E = parseInt(prov);
-            var prov = document.getElementById("ce").value;
-            var C_E = parseInt(prov);
-            var prov = document.getElementById("fe").value;
-            var F_E = parseInt(prov);
-            var pieDataE= [{value: EE_E,color: "#ffff00",highlight: "#FFD700",label: "EN ESPERA"},
-                            {value: A_E,color: "#00ff00",highlight: "#006400",label: "APROBADAS"},
-                            {value: R_E,color: "#ff0000",highlight: "#8B0000",label: "RECHAZADAS"},				
-                            {value: C_E,color: "#000000",highlight: "#A9A9A9",label: "CANCELADAS"},
-                            {value: F_E,color: "#0000ff",highlight: "#00008B",label: "FINALIZADAS"}
-                      ];
-            var prov = document.getElementById("eef").value;
-            var EE_F = parseInt(prov);
-            var prov = document.getElementById("af").value;
-            var A_F = parseInt(prov);
-            var prov = document.getElementById("rf").value;
-            var R_F = parseInt(prov);
-            var prov = document.getElementById("cf").value;
-            var C_F = parseInt(prov);
-            var prov = document.getElementById("ff").value;
-            var F_F = parseInt(prov);
-            var pieDataF= [{value: EE_F,color: "#ffff00",highlight: "#FFD700",label: "EN ESPERA"},
-                            {value: A_F,color: "#00ff00",highlight: "#006400",label: "APROBADAS"},
-                            {value: R_F,color: "#ff0000",highlight: "#8B0000",label: "RECHAZADAS"},				
-                            {value: C_F,color: "#000000",highlight: "#A9A9A9",label: "CANCELADAS"},
-                            {value: F_F,color: "#0000ff",highlight: "#00008B",label: "FINALIZADAS"}
-                      ];
-            var prov = document.getElementById("eei").value;
-            var EE_I = parseInt(prov);
-            var prov = document.getElementById("ai").value;
-            var A_I = parseInt(prov);
-            var prov = document.getElementById("ri").value;
-            var R_I = parseInt(prov);
-            var prov = document.getElementById("ci").value;
-            var C_I = parseInt(prov);
-            var prov = document.getElementById("fi").value;
-            var F_I = parseInt(prov);
-            var pieDataI= [{value: EE_I,color: "#ffff00",highlight: "#FFD700",label: "EN ESPERA"},
-                            {value: A_I,color: "#00ff00",highlight: "#006400",label: "APROBADAS"},
-                            {value: R_I,color: "#ff0000",highlight: "#8B0000",label: "RECHAZADAS"},				
-                            {value: C_I,color: "#000000",highlight: "#A9A9A9",label: "CANCELADAS"},
-                            {value: F_I,color: "#0000ff",highlight: "#00008B",label: "FINALIZADAS"}
-                      ];
-            var prov = document.getElementById("eek").value;
-            var EE_K = parseInt(prov);
-            var prov = document.getElementById("ak").value;
-            var A_K = parseInt(prov);
-            var prov = document.getElementById("rk").value;
-            var R_K = parseInt(prov);
-            var prov = document.getElementById("ck").value;
-            var C_K = parseInt(prov);
-            var prov = document.getElementById("fk").value;
-            var F_K = parseInt(prov);
-            var pieDataK= [{value: EE_K,color: "#ffff00",highlight: "#FFD700",label: "EN ESPERA"},
-                            {value: A_K,color: "#00ff00",highlight: "#006400",label: "APROBADAS"},
-                            {value: R_K,color: "#ff0000",highlight: "#8B0000",label: "RECHAZADAS"},				
-                            {value: C_K,color: "#000000",highlight: "#A9A9A9",label: "CANCELADAS"},
-                            {value: F_K,color: "#0000ff",highlight: "#00008B",label: "FINALIZADAS"}
-                      ];
-            var prov = document.getElementById("eel").value;
-            var EE_L = parseInt(prov);
-            var prov = document.getElementById("al").value;
-            var A_L = parseInt(prov);
-            var prov = document.getElementById("rl").value;
-            var R_L = parseInt(prov);
-            var prov = document.getElementById("cl").value;
-            var C_L = parseInt(prov);
-            var prov = document.getElementById("fl").value;
-            var F_L = parseInt(prov);
-            var pieDataL= [{value: EE_L,color: "#ffff00",highlight: "#FFD700",label: "EN ESPERA"},
-                            {value: A_L,color: "#00ff00",highlight: "#006400",label: "APROBADAS"},
-                            {value: R_L,color: "#ff0000",highlight: "#8B0000",label: "RECHAZADAS"},				
-                            {value: C_L,color: "#000000",highlight: "#A9A9A9",label: "CANCELADAS"},
-                            {value: F_L,color: "#0000ff",highlight: "#00008B",label: "FINALIZADAS"}
-                           ];
             var prov = document.getElementById("al2").value;
             var al = parseInt(prov);
             var prov = document.getElementById("ao2").value;
@@ -215,62 +220,6 @@
             var rDataA = [{value: al,color:"#00ff00",highlight: "#006400",label: "LIBRES"},
                           {value: ao,color: "#ff0000",highlight: "#8B0000",label: "OCUPADOS"},
                          ];
-            var prov = document.getElementById("bl2").value;
-            var bl = parseInt(prov);
-            var prov = document.getElementById("bo2").value;
-            var bo = parseInt(prov);
-            var rDataB = [{value: bl,color:"#00ff00",highlight: "#006400",label: "LIBRES"},
-                          {value: bo,color: "#ff0000",highlight: "#8B0000",label: "OCUPADOS"},
-                         ];
-            var prov = document.getElementById("cl2").value;
-            var cl = parseInt(prov);
-            var prov = document.getElementById("co2").value;
-            var co = parseInt(prov);
-            var rDataC = [{value: cl,color:"#00ff00",highlight: "#006400",label: "LIBRES"},
-                          {value: co,color: "#ff0000",highlight: "#8B0000",label: "OCUPADOS"},
-                         ];
-            var prov = document.getElementById("dl2").value;
-            var dl = parseInt(prov);
-            var prov = document.getElementById("do2").value;
-            var dop= parseInt(prov);
-            var rDataD = [{value: dl,color:"#00ff00",highlight: "#006400",label: "LIBRES"},
-                          {value: dop,color: "#ff0000",highlight: "#8B0000",label: "OCUPADOS"},
-                         ];
-            var prov = document.getElementById("el2").value;
-            var el = parseInt(prov);
-            var prov = document.getElementById("eo2").value;
-            var eo= parseInt(prov);
-            var rDataE = [{value: el,color:"#00ff00",highlight: "#006400",label: "LIBRES"},
-                          {value: eo,color: "#ff0000",highlight: "#8B0000",label: "OCUPADOS"},
-                         ];
-            var prov = document.getElementById("fl2").value;
-            var fl = parseInt(prov);
-            var prov = document.getElementById("fo2").value;
-            var fo= parseInt(prov);
-            var rDataF = [{value: fl,color:"#00ff00",highlight: "#006400",label: "LIBRES"},
-                          {value: fo,color: "#ff0000",highlight: "#8B0000",label: "OCUPADOS"},
-                         ];
-            var prov = document.getElementById("il2").value;
-            var il = parseInt(prov);
-            var prov = document.getElementById("io2").value;
-            var io= parseInt(prov);
-            var rDataI = [{value: il,color:"#00ff00",highlight: "#006400",label: "LIBRES"},
-                          {value: io,color: "#ff0000",highlight: "#8B0000",label: "OCUPADOS"},
-                         ];
-            var prov = document.getElementById("kl2").value;
-            var kl = parseInt(prov);
-            var prov = document.getElementById("ko2").value;
-            var ko= parseInt(prov);
-            var rDataK = [{value: kl,color:"#00ff00",highlight: "#006400",label: "LIBRES"},
-                          {value: ko,color: "#ff0000",highlight: "#8B0000",label: "OCUPADOS"},
-                         ];
-            var prov = document.getElementById("ll2").value;
-            var ll = parseInt(prov);
-            var prov = document.getElementById("lo2").value;
-            var lo= parseInt(prov);
-            var rDataL = [{value: ll,color:"#00ff00",highlight: "#006400",label: "LIBRES"},
-                        {value: lo,color: "#ff0000",highlight: "#8B0000",label: "OCUPADOS"},
-                        ];
 
             var pieData = [{value: EE_A,color:"#0b82e7",highlight: "#0c62ab",label: "EN ESPERA"},
                         {value: 16,color: "#e3e860",highlight: "#a9ad47",label: "APROBADAS"},
@@ -325,42 +274,11 @@
                 ]
               }    
             var bA = document.getElementById("bloqueA").getContext("2d");    
-            var bB = document.getElementById("bloqueB").getContext("2d");    
-            var bC = document.getElementById("bloqueC").getContext("2d");    
-            var bD = document.getElementById("bloqueD").getContext("2d");        
-            var bE = document.getElementById("bloqueE").getContext("2d");
-            var bF = document.getElementById("bloqueF").getContext("2d");
-            var bI = document.getElementById("bloqueI").getContext("2d");
-            var bK = document.getElementById("bloqueK").getContext("2d");
-            var bL = document.getElementById("bloqueL").getContext("2d");
             window.myPie = new Chart(bA).Pie(pieDataA);	
-            window.myPie = new Chart(bB).Pie(pieDataB);	
-            window.myPie = new Chart(bC).Pie(pieDataC);	
-            window.myPie = new Chart(bD).Pie(pieDataD);	
-            window.myPie = new Chart(bE).Pie(pieDataE);	
-            window.myPie = new Chart(bF).Pie(pieDataF);	
-            window.myPie = new Chart(bI).Pie(pieDataI);	
-            window.myPie = new Chart(bK).Pie(pieDataK);	
-            window.myPie = new Chart(bL).Pie(pieDataL);	    
 
-            var bc2 = document.getElementById("bloqueC2").getContext("2d");
             var ba2 = document.getElementById("bloqueA2").getContext("2d");
-            var bb2 = document.getElementById("bloqueB2").getContext("2d");
-            var bd2 = document.getElementById("bloqueD2").getContext("2d");
-            var be2 = document.getElementById("bloqueE2").getContext("2d");
-            var bf2 = document.getElementById("bloqueF2").getContext("2d");
-            var bi2 = document.getElementById("bloqueI2").getContext("2d");
-            var bk2 = document.getElementById("bloqueK2").getContext("2d");
-            var bl2 = document.getElementById("bloqueL2").getContext("2d");
             window.myPie = new Chart(ba2).Doughnut(rDataA);
-            window.myPie = new Chart(bb2).Doughnut(rDataB);
-            window.myPie = new Chart(bc2).Doughnut(rDataC);    
-            window.myPie = new Chart(bd2).Doughnut(rDataD);
-            window.myPie = new Chart(be2).Doughnut(rDataE);
-            window.myPie = new Chart(bi2).Doughnut(rDataI);
-            window.myPie = new Chart(bf2).Doughnut(rDataF);
-            window.myPie = new Chart(bk2).Doughnut(rDataK);
-            window.myPie = new Chart(bl2).Doughnut(rDataL);
+            
         
             var ctx = document.getElementById("chart-area").getContext("2d");
             var ctx2 = document.getElementById("chart-area2").getContext("2d");

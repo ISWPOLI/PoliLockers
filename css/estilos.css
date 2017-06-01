@@ -7,7 +7,7 @@
 body {
     background: rgb(16, 48, 92);
     min-height: 80vh;
-    min-width: 350px;
+    
 }
 form {
     margin: auto;
@@ -54,7 +54,7 @@ input[type="submit"]:active {
     margin-top: 80px;
     margin-bottom: 40px;
 }
-#camposForm{
+.camposForm{
     border-radius: 10px;
 }
 #resetPass{
@@ -68,5 +68,10 @@ input[type="submit"]:active {
 @media(max-width:480px){
     form {
         width: 70%;
+    }
+}
+@media(max-width:350px){
+    h1 {
+        font-size: inherit;
     }
 }

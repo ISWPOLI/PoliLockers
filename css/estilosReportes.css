@@ -19,3 +19,135 @@ h3 {
 div h1{
     color: black;
 }
+.pInfo {
+    background: white;
+    border-radius: 10px;
+    width: 86%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+form {
+    background: rgb(16, 48, 92);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.etiquetassolicitud {
+    color: #ff6600;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+input[type="submit"] {
+    background: #ff6600;
+    border: 0;
+    color: #FFFFFF;
+    opacity: 0.9;
+    border-radius: 10px;
+    font-size: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;   
+}
+input[type="submit"]:hover  {
+    opacity: 1;
+}
+input[type="submit"]:active {
+    transform: scale(0.95);
+}
+.eti {
+    color: black;
+    padding-top: 20px;
+}
+.fecha {
+    color: #ff6600;
+    font-weight: 700;
+    font-size: 30px;
+    background: white;
+    margin-left: 20%;
+    border-radius: 10px;
+    width: 60%;
+    
+}
+.conv {
+    text-align: left;
+    color: white;
+    margin-left: 10%;
+}
+
+.wait {
+    border: 2px solid white;
+    font-size: 20px;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     background: #ffff00;
+    color: #ffff00;
+}
+.acept {
+    border: 2px solid white;
+    font-size: 20px;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     background: #11FF00;
+     background: #11FF00;
+    color: #11FF00;
+}
+.reject {
+    border: 2px solid white;
+    font-size: 20px;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     background: #11FF00;
+     background: #ff0000;
+    color: #ff0000;
+}
+.cancel {
+    border: 2px solid white;
+    font-size: 20px;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     background: #11FF00;
+     background: #000000;
+    color: #000000;
+}
+.finish {
+    border: 2px solid white;
+    font-size: 20px;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     background: #11FF00;
+     background: #0000ff;
+    color: #0000ff;
+}
+.info {
+    border: 2px solid white;
+    font-size: 20px;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     background: #11FF00;
+     background: #ffffff;
+    color: #ffffff;
+}
+#fini, #ffin {
+    border-radius: 10px;
+    text-align: end;
+}
+@media(max-width:365px){
+    #bloqueA,#bloqueB,#bloqueC,#bloqueD,#bloqueE,#bloqueF,#bloqueI,#bloqueK,#bloqueL{
+        width: 95% !important;
+        height: 95% !important;
+    }
+    #bloqueA2,#bloqueB2,#bloqueC2,#bloqueD2,#bloqueE2,#bloqueF2,#bloqueI2,#bloqueK2,#bloqueL2{
+        width: 95% !important;
+        height: 95% !important;
+    }
+}
