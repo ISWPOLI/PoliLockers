@@ -22,9 +22,10 @@
                 <nav class="menu">
                    <?php
                         echo "  <a class='icon-profesor' href='historialCoord.php?user=$u'> Historial de solicitudes</a>
+                                <a class='icon-admin' href='reportesCoord.php?user=$u&fi=&ff='> Reportes</a>
                                 ";
                     ?>
-                    <a class="icon-admin" href="reportesCoord.php?fi=&ff="> Reportes</a>
+                    
                     <a class="icon-salir" href="index.html"> Salir</a>
                 </nav>
             </div>
@@ -56,7 +57,21 @@
                             }else if($e=="FINALIZADA"){
                                 $c="finish";
                             }
+                            $consulta2="SELECT * FROM lockers WHERE id='$locker'";
+                            $registro=mysqli_query($conexion, $consulta2);
+                            while($row = $registro->fetch_array(MYSQLI_BOTH)){
+                                $ocupado=$row['ocupado'];
+                                if($ocupado==1){
+                                    $clase="TAKEN";
+                                    $E="O";
+                                }else{
+                                    $clase="FREE";
+                                    $E="L";
+                                }    
+                            }
+                            
                             echo    "   <form>
+                                            <p class='etiquetasLocker'><span class='$clase'>'$E'</span></p>
                                             <label class='tit'>ID SOLICITUD :&nbsp</label><label class='res'>$id</label><BR>
                                             <label class='tit'>ESTADO :&nbsp</label><label><p class='$c'>$e</p></label><BR>
                                             <label class='tit'>BLOQUE :&nbsp</label><label class='res'>$bl</label><BR>
@@ -73,6 +88,7 @@
                     </table>
                     <table class="table table-striped tabla" id="t_coord">
                         <tr>
+                           <td></td>
                             <td><strong>ID SOLICITUD</strong></td>
                             <td><strong>ESTADO</strong></td>
                             <td><strong>BLOQUE</strong></td>
@@ -94,7 +110,7 @@
                             $user=$row['usuario_id'];
                             $fini=$row['fecha_inicio'];
                             $ffin=$row['fecha_fin'];
-                            $e=$row['estado'];
+                            $e=$row['estado'];                            
                             if($e=="EN ESPERA"){
                                 $c="wait";
                             }else if($e=="APROBADA"){
@@ -104,7 +120,20 @@
                             }else if($e=="FINALIZADA"){
                                 $c="finish";
                             }
+                            $consulta2="SELECT * FROM lockers WHERE id='$locker'";
+                            $registro=mysqli_query($conexion, $consulta2);
+                            while($row = $registro->fetch_array(MYSQLI_BOTH)){
+                                $ocupado=$row['ocupado'];
+                                if($ocupado==1){
+                                    $clase="TAKEN";
+                                    $E="O";
+                                }else{
+                                    $clase="FREE";
+                                    $E="L";
+                                }    
+                            }
                             echo    "   <tr>    
+                                    <td><p class='etiquetasLocker'><span class='$clase'>'$E'</span></p></td>
                                     <td>$id</td>
                                     <td><p class='$c'>$e</p></td>
                                     <td>$bl</td>

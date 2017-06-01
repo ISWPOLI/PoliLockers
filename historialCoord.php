@@ -22,9 +22,9 @@
                 <nav class="menu">
                     <?php
                         echo "  <a class='icon-profesor' href='coor.php?user=$u'> Solicitudes Pendientes</a>
+                        <a class='icon-admin' href='reportesCoord.php?user=$u&fi=&ff='> Reportes</a>
                                 ";
                     ?>
-                    <a class="icon-admin" href="reportesCoord.php?fi=&ff="> Reportes</a>
                     <a class="icon-salir" href="index.html"> Salir</a>
                 </nav>
             </div>
