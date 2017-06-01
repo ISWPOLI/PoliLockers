@@ -18,12 +18,13 @@
                 var fFin=document.getElementById("ffin").value;
                 var bloque=document.getElementById("bloque_t").value;
                 var locker=document.getElementById("idLocker_t").value;
+                var ubi=document.getElementById("ubi_t").value;
                 var user=document.getElementById("user_t").value;
                 if(fIni > fFin || fIni == fFin || fIni=="" || fFin==""){
                     var msj = "Porfavor verifique el rango de fechas.\n\nGracias."
                     alert(msj);   
                 }else{
-                    window.location.href = "solicitud.php?bloque="+bloque+"&id="+locker+"&u="+user+"&fIni="+fIni+"&fFin="+fFin;
+                    window.location.href = "solicitud.php?bloque="+bloque+"&id="+locker+"&ubi="+ubi+"&u="+user+"&fIni="+fIni+"&fFin="+fFin;
                 }
             }
         </script>
@@ -38,6 +39,7 @@
                 <nav class="menu">
                    <?php
                         echo "  <a class='icon-profesor' href='prof.php?user=$u'> Solicitar locker</a>
+                                <a class='icon-profesor' href='historialProf.php?user=$u'> Historial de solicitudes </a>
                                 <a class='icon-profesor' href='reportesProf.php?user=$u&fi=&ff='> Reportes</a>
                                 ";
                     ?>
@@ -53,7 +55,7 @@
                     <p class="etiquetassolicitud">INFO LOCKER</p>  
                     <table class="table table-striped tabla">
                     <?php
-                $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
+                $conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
                 $consulta="SELECT * FROM lockers WHERE id='$id'";
                 $registros=mysqli_query($conexion, $consulta);
                 $row=$registros->fetch_array(MYSQLI_BOTH);
@@ -106,11 +108,11 @@
         <form class="datos">
             <?php
                 echo    "<input id='idLocker_t' value=$id>
+                        <input id='ubi_t' value='$ubicacion'>
                         <input id='user_t' value=$u>
                         <input id='bloque_t' value=$bloque>";
             ?>
         </form>
-        
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
     </body>

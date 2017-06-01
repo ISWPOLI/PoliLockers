@@ -1,6 +1,7 @@
 <?php
     $u=$_GET['user'];
     $b=$_GET['bloque'];
+    $sec=$_GET['seccion'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,6 +13,17 @@
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estiloProf.css">
         <link rel="stylesheet" href="css/estiloMenu.css">
+        <script type="text/javascript">
+            function capturar(){
+                var seccion=document.getElementById("c").value;
+                var usuario=document.getElementById("us").value;
+                if(seccion!="Seleccione una sección..." && usuario!=""){
+                    window.location.href = "vistaLockers.php?bloque=I&user="+usuario+"&seccion="+seccion;
+                }else{
+                    alert("Por favor verifique su selección.\n\nGracias.");
+                }
+            }
+        </script>
     </head>
     <body>
        <header>
@@ -23,6 +35,7 @@
                 <nav class="menu">
                     <?php
                         echo "  <a class='icon-profesor' href='prof.php?user=$u'> Solicitar locker</a>
+                                <a class='icon-profesor' href='historialProf.php?user=$u'> Historial de solicitudes </a>
                                 <a class='icon-profesor' href='reportesProf.php?user=$u&fi=&ff='> Reportes</a>
                                 ";
                     ?>                   
@@ -39,14 +52,38 @@
                        <HR align="CENTER" size="2" width="75%" color="white" noshade>
                         <h4 id='texto_mapa'>Por favor seleccione el locker que desea solicitar...</h4>
                         <br>
+<div class="col-xs-12 col-sm-6">
+                        <br><br><br>
                         <p class="conv"><span class="TAKEN">O-</span> Lockers OCUPADOS</p>
                         <p class="conv"><span class="FREE">O-</span> Lockers DISPONIBLES</p>   
-                        <br>
+                   </div>
+<div class="col-xs-12 col-sm-6">
+            <div class="pInfo">
+               <h4 class="eti "align="center" color="#ffff">Para ver los lockers de una sección, seleccione :</h4>
+                <div class="col-xs-12">
+                    <select class="select" id="c">
+                        <option>Seleccione una sección...</option>
+                        <option>F. Ingeniería</option>
+                        <option>F. Mercadeo</option>
+                        <option>F. Ciencias Adm.</option>
+                        <option>F. Idiomas</option>
+                        <option>Sala de Profesores</option>
+                        <option>Sótano</option>
+                    </select>
+                </div>
+                <input onclick="capturar()" class="botonV"type="submit" value="FILTRAR" /><BR>
+            </div>
+        </div>
                    </div>
                     <?php
-                    $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
-                    $consulta="SELECT * FROM lockers WHERE bloque='$b'";
+                    $conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
+                    if($sec==""){
+                    $consulta="SELECT * FROM lockers WHERE bloque='$b' ORDER BY descripcion DESC,ubicacion,id";
                     $registros=mysqli_query($conexion, $consulta);
+                    }else{
+                    $consulta="SELECT * FROM lockers WHERE ubicacion ='$sec'";
+                    $registros=mysqli_query($conexion, $consulta);
+                    }
                     while($row = $registros->fetch_array(MYSQLI_BOTH)){
                         $id=$row['id'];
                         $ubicacion=$row['ubicacion'];
@@ -72,6 +109,11 @@
                     ?>   
                </div>
             </div>
+<form class="dis_none">
+<?php
+                echo    "   <input id='us' value='$u'>";
+?>
+</form>
        <script src="js/jquery.js"></script>
        <script src="js/bootstrap.min.js"></script>
     </body>

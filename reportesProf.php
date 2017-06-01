@@ -3,7 +3,7 @@
     $fIni=$_GET['fi'];
     $fFin=$_GET['ff'];
 
-    $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
+    $conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
 
     if($fIni!="" && $fFin!=""){
 //-----------------------------------------------------------------------------------------------------BLOQUE A
@@ -121,7 +121,7 @@
                         <p class="conv"><span class="reject">O-</span>Solicitudes RECHAZADAS</p>   
                         <p class="conv"><span class="finish">O-</span>Solicitudes FINALIZADAS</p>   
                         <p class="conv"><span class="cancel">O-</span> Solicitudes CANCELADAS</p>   
-                        <p class="conv"><span class="info">O-</span> NO EXISTEN SOLICITUDES SOLICITUDES</p>   
+                        <p class="conv"><span class="info">O-</span> NO EXISTEN SOLICITUDES</p>   
                     <br>
                     <script src="js/Chart.js"></script>
                     <div class="col-xs-12" id="canvas-holder">

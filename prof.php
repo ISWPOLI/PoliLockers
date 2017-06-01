@@ -37,46 +37,13 @@
                 <img  id="mapaPoli"src="./images/mapa_poli.png" alt="Mapa BLoques IUPG-Polilockers" usemap="#mapa">
                 <?php
                     echo "  <form id='f_res'>
-                                <a class='lblBloques' href='vistaLockers.php?bloque=A&user=$u'><label class='btn'>BLOQUE A</label></a>
-                                <BR><BR>
-                                <a class='lblBloques' href='vistaLockers.php?bloque=B&user=$u'><label class='btn'>BLOQUE B</label></a>
-                                <BR><BR>
-                                <a class='lblBloques' href='vistaLockers.php?bloque=C&user=$u'><label class='btn'>BLOQUE C</label></a>
-                                <BR><BR>
-                                <a class='lblBloques' href='vistaLockers.php?bloque=D&user=$u'><label class='btn'>BLOQUE D</label></a>
-                                <BR><BR>
-                                <a class='lblBloques' href='vistaLockers.php?bloque=E&user=$u'><label class='btn'>BLOQUE E</label></a>
-                                <BR><BR>
-                                <a class='lblBloques' href='vistaLockers.php?bloque=F&user=$u'><label class='btn'>BLOQUE F</label></a>
-                                <BR><BR>
-                                <a class='lblBloques' href='vistaLockers.php?bloque=G&user=$u'><label class='btn'>BLOQUE G</label></a>
-                                <BR><BR>
-                                <a class='lblBloques' href='vistaLockers.php?bloque=H&user=$u'><label class='btn'>BLOQUE H<label></a>
-                                <BR><BR>
-                                <a class='lblBloques' href='vistaLockers.php?bloque=I&user=$u'><label class='btn'>BLOQUE I</label></a>
-                                <BR><BR>
-                                <a class='lblBloques' href='vistaLockers.php?bloque=J&user=$u'><label class='btn'>BLOQUE J</label></a>
-                                <BR><BR>
-                                <a class='lblBloques' href='vistaLockers.php?bloque=K&user=$u'><label class='btn'>BLOQUE K</label></a>
-                                <BR><BR>
-                                <a class='lblBloques' href='vistaLockers.php?bloque=L&user=$u'><label class='btn'>BLOQUE L</label></a>
+                                <a class='lblBloques' href='vistaLockers.php?bloque=I&user=$u&seccion='><label class='btn'>BLOQUE I</label></a>
                                 <BR><BR>
                             </form>";    
                 ?>
                 <map name="mapa">
                   <?php
-                        echo    "<area class='areaMapa' id='bloqueA' alt='Bloque A' shape='circle' coords='350,380,40' href='vistaLockers.php?                 bloque=A&user=$u'>
-                                <area class='areaMapa' id='bloqueB' alt='Bloque B' shape='circle' coords='310,300,40' href='vistaLockers.php?bloque=B&user=$u'>
-                                <area class='areaMapa' id='bloqueC' alt='Bloque C' shape='circle' coords='150,260,40' href='vistaLockers.php?bloque=C&user=$u'>
-                                <area class='areaMapa' id='bloqueD' alt='Bloque D' shape='circle' coords='300,210,30' href='vistaLockers.php?bloque=D&user=$u'>
-                                <area class='areaMapa' id='bloqueE' alt='Bloque E' shape='circle' coords='220,200,30' href='vistaLockers.php?bloque=E&user=$u'>
-                                <area class='areaMapa' id='bloqueF' alt='Bloque F' shape='circle' coords='130,155,40' href='vistaLockers.php?bloque=F&user=$u'>
-                                <area class='areaMapa' id='bloqueG' alt='Bloque G' shape='circle' coords='180,90,40' href='vistaLockers.php?bloque=G&user=$u'>
-                                <area class='areaMapa' id='bloqueH' alt='Bloque H' shape='circle' coords='330,130,40' href='vistaLockers.php?bloque=H&user=$u'>
-                                <area class='areaMapa' id='bloqueI' alt='Bloque I' shape='circle' coords='265,385,40' href='vistaLockers.php?bloque=I&user=$u'>
-                                <area class='areaMapa' id='bloqueJ' alt='Bloque J' shape='circle' coords='380,50,40' href='vistaLockers.php?bloque=J&user=$u'>
-                                <area class='areaMapa' id='bloqueK' alt='Bloque K' shape='circle' coords='530,330,30' href='vistaLockers.php?bloque=K&user=$u'>
-                                <area class='areaMapa' id='bloqueL' alt='Bloque L' shape='circle' coords='470,200,40' href='vistaLockers.php?bloque=L&user=$u'>";
+                        echo    "<area class='areaMapa' id='bloqueI' alt='Bloque I' shape='circle' coords='265,385,40' href='vistaLockers.php?bloque=I&user=$u&seccion='>";
                     ?>
                    <!--ORIGINALES
                    <area class="areaMapa" id="bloqueB" alt="Bloque B" shape="circle" coords="310,300,40" href="vistaLockers.php?bloque=B">

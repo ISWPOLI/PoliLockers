@@ -37,13 +37,14 @@
                 <div class='col-xs-12'>
                     <div class="resp">
                         <?php
-                        $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
+                        $conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
                         $consulta="SELECT * FROM solicitudes WHERE u_coord='$u' and estado='EN ESPERA'";
                         $registros=mysqli_query($conexion, $consulta);
                         while($row = $registros->fetch_array(MYSQLI_BOTH)){
                             $id=$row['id'];
                             $bl=$row['bloque'];
                             $locker=$row['locker_id'];
+                            $ubi=$row['ubicacion'];
                             $user=$row['usuario_id'];
                             $fini=$row['fecha_inicio'];
                             $ffin=$row['fecha_fin'];
@@ -76,6 +77,7 @@
                                             <label class='tit'>ESTADO :&nbsp</label><label><p class='$c'>$e</p></label><BR>
                                             <label class='tit'>BLOQUE :&nbsp</label><label class='res'>$bl</label><BR>
                                             <label class='tit'>LOCKER :&nbsp</label><label class='res'>$locker</label><BR>
+                                            <label class='tit'>UBICACION :&nbsp</label><label class='res'>$ubi</label><BR>
                                             <label class='tit'>USUARIO :&nbsp</label><label class='res'>$user</label><BR>
                                             <label class='tit'>FECHA INICIAL :&nbsp</label><label class='res'>$fini</label><BR>
                                             <label class='tit'>FECHA FINAL :&nbsp</label><label class='res'>$ffin</label><BR>
@@ -93,6 +95,7 @@
                             <td><strong>ESTADO</strong></td>
                             <td><strong>BLOQUE</strong></td>
                             <td><strong>LOCKER</strong></td>
+                            <td><strong>UBICACION</strong></td>
                             <td><strong>USUARIO</strong></td>
                             <td><strong>FECHA INICIO</strong></td>
                             <td><strong>FECHA FIN</strong></td>
@@ -100,13 +103,14 @@
                             <td></td>
                         </tr>
                         <?php
-                        $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
+                        $conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
                         $consulta="SELECT * FROM solicitudes WHERE u_coord='$u' and estado='EN ESPERA'";
                         $registros=mysqli_query($conexion, $consulta);
                         while($row = $registros->fetch_array(MYSQLI_BOTH)){
                             $id=$row['id'];
                             $bl=$row['bloque'];
                             $locker=$row['locker_id'];
+                            $ubi=$row['ubicacion'];
                             $user=$row['usuario_id'];
                             $fini=$row['fecha_inicio'];
                             $ffin=$row['fecha_fin'];
@@ -138,6 +142,7 @@
                                     <td><p class='$c'>$e</p></td>
                                     <td>$bl</td>
                                     <td>$locker</td>
+                                    <td>$ubi</td>
                                     <td>$user</td>
                                     <td>$fini</td>
                                     <td>$ffin</td>

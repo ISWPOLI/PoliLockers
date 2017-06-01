@@ -1,5 +1,5 @@
 <?php
-    $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
+    $conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
     $consulta="SELECT * FROM usuarios";
     $registros=mysqli_query($conexion, $consulta);      
     $registros1=mysqli_query($conexion, $consulta);  

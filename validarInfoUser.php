@@ -1,10 +1,10 @@
 <?php
+$conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
 $usuario=$_POST['txtUser'];
 $clave=$_POST['txtPass'];
 $nombre=$_POST['txtNombre'];
 $rol=$_POST['txtRol'];
 $correo=$_POST['txtCorreo'];
-$conexion=mysqli_connect("localhost", "root", "", "bdlockers");
 if($_POST[Agregar]){
     $consulta="INSERT INTO usuarios VALUES('$usuario','$clave','$nombre','$rol','$correo')";
     $resultado=mysqli_query($conexion, $consulta);

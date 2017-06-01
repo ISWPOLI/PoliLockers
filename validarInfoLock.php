@@ -4,7 +4,7 @@ $bloque=$_POST['txtBloque'];
 $ubicacion=$_POST['txtUbicacion'];
 $descripcion=$_POST['txtDescripcion'];
 
-$conexion=mysqli_connect("localhost", "root", "", "bdlockers");
+$conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
 
 
 if($_POST[Agregar]){

@@ -3,7 +3,7 @@ $usuario=$_POST['usuario'];
 $clave=$_POST['clave'];
 
 // conexion con db
-$conexion=mysqli_connect("localhost", "root", "", "bdlockers");
+$conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
 
 if($_POST[ingresar]){
     $consulta="SELECT rol FROM usuarios WHERE usuario='$usuario' and clave='$clave'";

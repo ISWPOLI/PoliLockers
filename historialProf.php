@@ -35,7 +35,7 @@
                 <div class='col-xs-12'>
                    <div class="resp">
                         <?php
-                        $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
+                        $conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
                         $consulta="SELECT * FROM solicitudes WHERE usuario_id='$u'";
                         $registros=mysqli_query($conexion, $consulta);
                         while($row = $registros->fetch_array(MYSQLI_BOTH)){
@@ -93,7 +93,7 @@
                             <td></td>
                         </tr>
                         <?php
-                        $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
+                        $conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
                         $consulta="SELECT * FROM solicitudes WHERE usuario_id='$u'";
                         $registros=mysqli_query($conexion, $consulta);
                         while($row = $registros->fetch_array(MYSQLI_BOTH)){

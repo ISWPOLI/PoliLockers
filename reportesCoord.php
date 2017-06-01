@@ -3,7 +3,7 @@
     $fIni=$_GET['fi'];
     $fFin=$_GET['ff'];
 
-    $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
+    $conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
 
     if($fIni!="" && $fFin!=""){
 //-----------------------------------------------------------------------------------------------------BLOQUE A
@@ -124,9 +124,9 @@
                <div class="main row">
                     <?php
                         if($fIni!="" && $fFin!=""){
-                            echo "<h3>A continuación se muestran todas las solicitudes EN ESPERA, ACEPTADAS, RECHAZADAS, FINALIZADAS Y CANCELADAS del bloque que supervisa y que se han hecho entre <BR><BR> <p class='fecha'>>   ".$fIni." ... ".$fFin."   <</p></h3>";
+                            echo "<h3>A continuación se muestran todas las solicitudes EN ESPERA, ACEPTADAS, RECHAZADAS, FINALIZADAS Y CANCELADAS de la sección o secciones que supervisa y que se han hecho entre <BR><BR> <p class='fecha'>>   ".$fIni." ... ".$fFin."   <</p></h3>";
                         }else{
-                            echo "<h3>A continuación se muestran todas las solicitudes EN ESPERA, ACEPTADAS, RECHAZADAS, FINALIZADAS Y CANCELADAS del bloque que supervisa y que se han hecho en la historia del sistema.</h3>";
+                            echo "<h3>A continuación se muestran todas las solicitudes EN ESPERA, ACEPTADAS, RECHAZADAS, FINALIZADAS Y CANCELADAS de la sección o secciones que supervisa y que se han hecho en la historia del sistema.</h3>";
                         }
                     ?>
                     <br>
@@ -135,7 +135,7 @@
                         <p class="conv"><span class="reject">O-</span>Solicitudes RECHAZADAS</p>   
                         <p class="conv"><span class="finish">O-</span>Solicitudes FINALIZADAS</p>   
                         <p class="conv"><span class="cancel">O-</span> Solicitudes CANCELADAS</p>   
-                        <p class="conv"><span class="info">O-</span> NO EXISTEN SOLICITUDES SOLICITUDES</p>   
+                        <p class="conv"><span class="info">O-</span> NO EXISTEN SOLICITUDES</p>   
                     <br>
                     <script src="js/Chart.js"></script>
                     <div class="col-xs-12" id="canvas-holder">
@@ -155,7 +155,7 @@
         </div>
         <h1>REPORTE #2 - Estado de los Lockers</h1>
         <HR align="CENTER" size="2" width="75%" color="white" noshade>               
-        <h3 align="center">A continuación se muestra la cantidad de lockers DISPONIBLES y OCUPADOS en el bloque que usted supervisa.</h3>
+        <h3 align="center">A continuación se muestra la cantidad de lockers DISPONIBLES y OCUPADOS en la sección o secciones que usted supervisa.</h3>
         <br>
             <p class="conv"><span class="acept">O-</span> Lockers DISPONIBLES</p>   
             <p class="conv"><span class="reject">O-</span> Lockers OCUPADOS</p>   

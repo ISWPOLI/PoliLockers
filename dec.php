@@ -1,7 +1,9 @@
 <?php
-    $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
+    $conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
     $consulta="SELECT * FROM bloque";
     $registros=mysqli_query($conexion, $consulta);      
+    $consulta1="SELECT * FROM bloque";
+    $registros1=mysqli_query($conexion, $consulta1);
     $consulta2="SELECT * FROM bloque";
     $registros2=mysqli_query($conexion, $consulta2);      
     $consulta3="SELECT * FROM usuarios WHERE rol='Coordinador'";
@@ -19,10 +21,10 @@
         <link rel="stylesheet" href="css/estiloMenu.css">
         <script type="text/javascript">
             function capturar(){
-                var letra=document.getElementById("l_b").value;
-                var coord=document.getElementById("c").value.text;
-                if(letra!="Seleccione un Bloque..." && coord!="Seleccione un Coordinador..."){
-                    window.location.href = "asignCoord.php?l="+letra+"&c="+coord;    
+                var ubic=document.getElementById("l_b").value;
+                var coord=document.getElementById("c").value;
+                if(ubic!="Seleccione una ubicación..." && coord!="Seleccione un Coordinador..."){
+                    window.location.href = "asignCoord.php?ubi="+ubic+"&c="+coord;    
                 }else{
                     var msj = "Porfavor verifique su selección.\n\nGracias."
                     alert(msj);   
@@ -39,7 +41,7 @@
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu "for="menu-bar"></label>
                 <nav class="menu">
-                   <a class="icon-decano" href="reportesDec.php?fi=&ff="> Reportes</a>
+                   <a class="icon-decano" href="reportesDec.php?fIni=&fFin="> Reportes</a>
                     <a class="icon-salir" href="index.html"> Salir</a>
                 </nav>
             </div>
@@ -49,14 +51,26 @@
                 <div class="panelIzq" width=100% height=100%>
                     <h2 class="titulo">Bloques</h2>
                     <HR align="CENTER" size="2" width="75%" color="white" noshade>
+<div class="centro" id="f_bloques">
+               <?php
+                    while($row = $registros1->fetch_array(MYSQLI_BOTH)){
+                        echo '  <form>
+                                    <label class="tit">Bloque :&nbsp;</label><label class="res">'.$row['letra_bloque'].'</label><br>
+                                    <label class="tit">Ubicación:&nbsp;</label><label class="res">'.$row['ubicacion'].'</label><br>
+                                    <label class="tit">Coordinador :&nbsp;</label><label class="res">'.$row['coordinador'].'</label><br>
+                                </form>';
+                    }
+                ?>
+            </div>
                 <table class="table table-striped tabla" border="1">
                     <tr>
-                        <td><strong>BLOQUE</strong></td><td><strong>COORDINADOR</strong></td>
+                        <td><strong>BLOQUE</strong></td><td><strong>UBICACIÓN</strong></td><td><strong>COORDINADOR</strong></td>
                     </tr>
                     <?php
                         while($row1 = $registros->fetch_array(MYSQLI_BOTH)){
                             echo    '<tr>
                                     <td>'.$row1['letra_bloque'].'</td>
+                                    <td>'.$row1['ubicacion'].'</td>
                                     <td>'.$row1['coordinador'].'</td>
                                     </tr>';
                         }
@@ -69,10 +83,10 @@
                     <h2 class="titulo">Asignar Coordinador</h2>
                     <HR align="CENTER" size="2" width="75%" color="white" noshade>
                     <select class="select" id="l_b">
-                        <option>Seleccione un Bloque...</option>
+                        <option>Seleccione una ubicación...</option>
                         <?php 
                             while($row2 = $registros2->fetch_array(MYSQLI_BOTH)){
-                                echo    '<option>'.$row2['letra_bloque'].'</option>';
+                                echo    '<option>'.$row2['ubicacion'].'</option>';
                             }
                         ?>
                     </select>
