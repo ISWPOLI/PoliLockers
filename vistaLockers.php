@@ -23,9 +23,9 @@
                 <nav class="menu">
                     <?php
                         echo "  <a class='icon-profesor' href='prof.php?user=$u'> Solicitar locker</a>
+                                <a class='icon-profesor' href='reportesProf.php?user=$u&fi=&ff='> Reportes</a>
                                 ";
-                    ?>
-                    <a class="icon-profesor" href="reportesProf.php?fi=&ff="> Reportes</a>
+                    ?>                   
                     <a class="icon-salir" href="index.html"> Salir</a>
                 </nav>
             </div>               

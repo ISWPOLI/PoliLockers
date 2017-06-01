@@ -19,7 +19,12 @@
                 var bloque=document.getElementById("bloque_t").value;
                 var locker=document.getElementById("idLocker_t").value;
                 var user=document.getElementById("user_t").value;
-                window.location.href = "solicitud.php?bloque="+bloque+"&id="+locker+"&u="+user+"&fIni="+fIni+"&fFin="+fFin;
+                if(fIni > fFin || fIni == fFin || fIni=="" || fFin==""){
+                    var msj = "Porfavor verifique el rango de fechas.\n\nGracias."
+                    alert(msj);   
+                }else{
+                    window.location.href = "solicitud.php?bloque="+bloque+"&id="+locker+"&u="+user+"&fIni="+fIni+"&fFin="+fFin;
+                }
             }
         </script>
     </head>
@@ -33,9 +38,9 @@
                 <nav class="menu">
                    <?php
                         echo "  <a class='icon-profesor' href='prof.php?user=$u'> Solicitar locker</a>
+                                <a class='icon-profesor' href='reportesProf.php?user=$u&fi=&ff='> Reportes</a>
                                 ";
                     ?>
-                    <a class="icon-profesor" href="reportesProf.php?fi=&ff="> Reportes</a>
                     <a class="icon-salir" href="index.html"> Salir</a>
                 </nav>
             </div>               
