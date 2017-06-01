@@ -20,8 +20,14 @@
         <script type="text/javascript">
             function capturar(){
                 var letra=document.getElementById("l_b").value;
-                var coord=document.getElementById("c").value;
-                window.location.href = "asignCoord.php?l="+letra+"&c="+coord;
+                var coord=document.getElementById("c").value.text;
+                if(letra!="Seleccione un Bloque..." && coord!="Seleccione un Coordinador..."){
+                    window.location.href = "asignCoord.php?l="+letra+"&c="+coord;    
+                }else{
+                    var msj = "Porfavor verifique su selección.\n\nGracias."
+                    alert(msj);   
+                }
+                
             }
         </script>
     </head>

@@ -1,35 +1,259 @@
 <?php
-    $fIni=$_GET['fi'];
-    $fFin=$_GET['ff'];
-
-    $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
+    $fIni=$_GET['fIni'];
+    $fFin=$_GET['fFin'];
+    
+    $conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
+//    $conexion=mysqli_connect("localhost", "root", "", "bdlockers");
 
     if($fIni!="" && $fFin!=""){
-        //-----------------------------------------------------------------------------------------------------BLOQUE A
-        
-    }else{
-        //-----------------------------------------------------------------------------------------------------BLOQUE A
-        $consultaEEA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE bloque='A' AND estado='EN ESPERA'";
+//-----------------------------------------------------------------------------------------------------BLOQUE A
+        $consultaEEA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (ubicacion='F. Ingeniería' AND estado='EN ESPERA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (ubicacion='F. Ingeniería' AND estado='EN ESPERA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
         $resultEEA = $conexion->query($consultaEEA);
         $countEEA = $resultEEA->fetch_assoc();
         $registrosEEA = $countEEA['NumRows'];
         
-        $consultaAA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE bloque='A' AND estado='APROBADA'";
+        $consultaAA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (ubicacion='F. Ingeniería' AND estado='APROBADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (ubicacion='F. Ingeniería' AND estado='APROBADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
         $resultAA = $conexion->query($consultaAA);
         $countAA = $resultAA->fetch_assoc();
         $registrosAA = $countAA['NumRows'];
         
-        $consultaRA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE bloque='A' AND estado='RECHAZADA'";
+        $consultaRA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (ubicacion='F. Ingeniería' AND estado='RECHAZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (ubicacion='F. Ingeniería' AND estado='RECHAZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
         $resultRA = $conexion->query($consultaRA);
         $countRA = $resultRA->fetch_assoc();
         $registrosRA = $countRA['NumRows'];
         
-        $consultaCA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE bloque='A' AND estado='CANCELADA'";
+        $consultaCA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (ubicacion='F. Ingeniería' AND estado='CANCELADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (ubicacion='F. Ingeniería' AND estado='CANCELADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
         $resultCA = $conexion->query($consultaCA);
         $countCA = $resultCA->fetch_assoc();
         $registrosCA = $countCA['NumRows'];
         
-        $consultaFA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE bloque='A' AND estado='FINALIZADA'";
+        $consultaFA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (ubicacion='F. Ingeniería' AND estado='FINALIZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (ubicacion='F. Ingeniería' AND estado='FINALIZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultFA = $conexion->query($consultaFA);
+        $countFA = $resultFA->fetch_assoc();
+        $registrosFA = $countFA['NumRows'];        
+//-----------------------------------------------------------------------------------------------------BLOQUE B
+        $consultaEEB ="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='B' AND estado='EN ESPERA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='B' AND estado='EN ESPERA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultEEB = $conexion->query($consultaEEB);
+        $countEEB = $resultEEB->fetch_assoc();
+        $registrosEEB = $countEEB['NumRows'];
+        
+        $consultaAB="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='B' AND estado='APROBADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='B' AND estado='APROBADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultAB = $conexion->query($consultaAB);
+        $countAB = $resultAB->fetch_assoc();
+        $registrosAB = $countAB['NumRows'];
+        
+        $consultaRB="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='B' AND estado='RECHAZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='B' AND estado='RECHAZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))"; 
+        $resultRB = $conexion->query($consultaRB);
+        $countRB = $resultRB->fetch_assoc();
+        $registrosRB = $countRB['NumRows'];
+        
+        $consultaCB="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='B' AND estado='CANCELADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='B' AND estado='CANCELADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultCB = $conexion->query($consultaCB);
+        $countCB = $resultCB->fetch_assoc();
+        $registrosCB = $countCB['NumRows'];
+        
+        $consultaFB="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='B' AND estado='FINALIZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='B' AND estado='FINALIZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultFB = $conexion->query($consultaFB);
+        $countFB = $resultFB->fetch_assoc();
+        $registrosFB = $countFB['NumRows'];
+        //-----------------------------------------------------------------------------------------------------BLOQUE C
+        $consultaEEC ="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='C' AND estado='EN ESPERA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='C' AND estado='EN ESPERA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultEEC = $conexion->query($consultaEEC);
+        $countEEC = $resultEEC->fetch_assoc();
+        $registrosEEC = $countEEC['NumRows'];
+        
+        $consultaAC="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='C' AND estado='APROBADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='C' AND estado='APROBADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultAC = $conexion->query($consultaAC);
+        $countAC = $resultAC->fetch_assoc();
+        $registrosAC = $countAC['NumRows'];
+        
+        $consultaRC="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='C' AND estado='RECHAZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='C' AND estado='RECHAZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultRC = $conexion->query($consultaRC);
+        $countRC = $resultRC->fetch_assoc();
+        $registrosRC = $countRC['NumRows'];
+        
+        $consultaCC="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='C' AND estado='CANCELADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='C' AND estado='CANCELADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultCC = $conexion->query($consultaCC);
+        $countCC = $resultCC->fetch_assoc();
+        $registrosCC = $countCC['NumRows'];
+        
+        $consultaFC="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='C' AND estado='FINALIZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='C' AND estado='FINALIZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultFC = $conexion->query($consultaFC);
+        $countFC = $resultFC->fetch_assoc();
+        $registrosFC = $countFC['NumRows'];
+        //-----------------------------------------------------------------------------------------------------BLOQUE D
+        $consultaEED ="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='D' AND estado='EN ESPERA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='D' AND estado='EN ESPERA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultEED = $conexion->query($consultaEED);
+        $countEED = $resultEED->fetch_assoc();
+        $registrosEED = $countEED['NumRows'];
+        
+        $consultaAD="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='D' AND estado='APROBADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='D' AND estado='APROBADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultAD = $conexion->query($consultaAD);
+        $countAD = $resultAD->fetch_assoc();
+        $registrosAD = $countAD['NumRows'];
+        
+        $consultaRD="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='D' AND estado='RECHAZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='D' AND estado='RECHAZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultRD = $conexion->query($consultaRD);
+        $countRD = $resultRD->fetch_assoc();
+        $registrosRD = $countRD['NumRows'];
+        
+        $consultaCD="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='D' AND estado='CANCELADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='D' AND estado='CANCELADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultCD = $conexion->query($consultaCD);
+        $countCD = $resultCD->fetch_assoc();
+        $registrosCD = $countCD['NumRows'];
+        
+        $consultaFD="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='D' AND estado='FINALIZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='D' AND estado='FINALIZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultFD = $conexion->query($consultaFD);
+        $countFD = $resultFD->fetch_assoc();
+        $registrosFD = $countFD['NumRows'];
+        //-----------------------------------------------------------------------------------------------------BLOQUE E
+        $consultaEEE ="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='E' AND estado='EN ESPERA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='E' AND estado='EN ESPERA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultEEE = $conexion->query($consultaEEE);
+        $countEEE = $resultEEE->fetch_assoc();
+        $registrosEEE = $countEEE['NumRows'];
+        
+        $consultaAE="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='E' AND estado='APROBADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='E' AND estado='APROBADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultAE = $conexion->query($consultaAE);
+        $countAE = $resultAE->fetch_assoc();
+        $registrosAE = $countAE['NumRows'];
+        
+        $consultaRE="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='E' AND estado='RECHAZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='E' AND estado='RECHAZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultRE = $conexion->query($consultaRE);
+        $countRE = $resultRE->fetch_assoc();
+        $registrosRE = $countRE['NumRows'];
+        
+        $consultaCE="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='E' AND estado='CANCELADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='E' AND estado='CANCELADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultCE = $conexion->query($consultaCE);
+        $countCE = $resultCE->fetch_assoc();
+        $registrosCE = $countCE['NumRows'];
+        
+        $consultaFE="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='E' AND estado='FINALIZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='E' AND estado='FINALIZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultFE = $conexion->query($consultaFE);
+        $countFE = $resultFE->fetch_assoc();
+        $registrosFE = $countFE['NumRows'];
+        //-----------------------------------------------------------------------------------------------------BLOQUE F
+        $consultaEEF ="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='F' AND estado='EN ESPERA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='F' AND estado='EN ESPERA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultEEF = $conexion->query($consultaEEF);
+        $countEEF = $resultEEF->fetch_assoc();
+        $registrosEEF = $countEEF['NumRows'];
+        
+        $consultaAF="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='F' AND estado='APROBADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='F' AND estado='APROBADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultAF = $conexion->query($consultaAF);
+        $countAF = $resultAF->fetch_assoc();
+        $registrosAF = $countAF['NumRows'];
+        
+        $consultaRF="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='F' AND estado='RECHAZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='F' AND estado='RECHAZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultRF = $conexion->query($consultaRF);
+        $countRF = $resultRF->fetch_assoc();
+        $registrosRF = $countRF['NumRows'];
+        
+        $consultaCF="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='F' AND estado='CANCELADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='F' AND estado='CANCELADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultCF = $conexion->query($consultaCF);
+        $countCF = $resultCF->fetch_assoc();
+        $registrosCF = $countCF['NumRows'];
+        
+        $consultaFF="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='F' AND estado='FINALIZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='F' AND estado='FINALIZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultFF = $conexion->query($consultaFF);
+        $countFF = $resultFF->fetch_assoc();
+        $registrosFF = $countFF['NumRows'];
+        //-----------------------------------------------------------------------------------------------------BLOQUE I
+        $consultaEEI ="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='I' AND estado='EN ESPERA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='I' AND estado='EN ESPERA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultEEI = $conexion->query($consultaEEI);
+        $countEEI = $resultEEI->fetch_assoc();
+        $registrosEEI = $countEEI['NumRows'];
+        
+        $consultaAI="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='I' AND estado='APROBADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='I' AND estado='APROBADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultAI = $conexion->query($consultaAI);
+        $countAI = $resultAI->fetch_assoc();
+        $registrosAI = $countAI['NumRows'];
+        
+        $consultaRI="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='I' AND estado='RECHAZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='I' AND estado='RECHAZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultRI = $conexion->query($consultaRI);
+        $countRI = $resultRI->fetch_assoc();
+        $registrosRI = $countRI['NumRows'];
+        
+        $consultaCI="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='I' AND estado='CANCELADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='I' AND estado='CANCELADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultCI = $conexion->query($consultaCI);
+        $countCI = $resultCI->fetch_assoc();
+        $registrosCI = $countCI['NumRows'];
+        
+        $consultaFI="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='I' AND estado='FINALIZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='I' AND estado='FINALIZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultFI = $conexion->query($consultaFI);
+        $countFI = $resultFI->fetch_assoc();
+        $registrosFI = $countFI['NumRows'];
+        //-----------------------------------------------------------------------------------------------------BLOQUE K
+        $consultaEEK ="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='K' AND estado='EN ESPERA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='K' AND estado='EN ESPERA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultEEK = $conexion->query($consultaEEK);
+        $countEEK = $resultEEK->fetch_assoc();
+        $registrosEEK = $countEEK['NumRows'];
+        
+        $consultaAK="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='K' AND estado='APROBADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='K' AND estado='APROBADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultAK = $conexion->query($consultaAK);
+        $countAK = $resultAK->fetch_assoc();
+        $registrosAK = $countAK['NumRows'];
+        
+        $consultaRK="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='K' AND estado='RECHAZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='K' AND estado='RECHAZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultRK = $conexion->query($consultaRK);
+        $countRK = $resultRK->fetch_assoc();
+        $registrosRK = $countRK['NumRows'];
+        
+        $consultaCK="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='K' AND estado='CANCELADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='K' AND estado='CANCELADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultCK = $conexion->query($consultaCK);
+        $countCK = $resultCK->fetch_assoc();
+        $registrosCK = $countCK['NumRows'];
+        
+        $consultaFK="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='K' AND estado='FINALIZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='K' AND estado='FINALIZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultFK = $conexion->query($consultaFK);
+        $countFK = $resultFK->fetch_assoc();
+        $registrosFK = $countFK['NumRows'];
+        //-----------------------------------------------------------------------------------------------------BLOQUE L
+        $consultaEEL ="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='L' AND estado='EN ESPERA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='L' AND estado='EN ESPERA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultEEL = $conexion->query($consultaEEL);
+        $countEEL = $resultEEL->fetch_assoc();
+        $registrosEEL = $countEEL['NumRows'];
+        
+        $consultaAL="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='L' AND estado='APROBADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='L' AND estado='APROBADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultAL = $conexion->query($consultaAL);
+        $countAL = $resultAL->fetch_assoc();
+        $registrosAL = $countAL['NumRows'];
+        
+        $consultaRL="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='L' AND estado='RECHAZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='L' AND estado='RECHAZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultRL = $conexion->query($consultaRL);
+        $countRL = $resultRL->fetch_assoc();
+        $registrosRL = $countRL['NumRows'];
+        
+        $consultaCL="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='L' AND estado='CANCELADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='L' AND estado='CANCELADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultCL = $conexion->query($consultaCL);
+        $countCL = $resultCL->fetch_assoc();
+        $registrosCL = $countCL['NumRows'];
+        
+        $consultaFL="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE (bloque='L' AND estado='FINALIZADA' AND fecha_inicio BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE)) OR (bloque='L' AND estado='FINALIZADA' AND fecha_fin BETWEEN CAST('$fIni' AS DATE) AND CAST('$fFin' AS DATE))";
+        $resultFL = $conexion->query($consultaFL);
+        $countFL = $resultFL->fetch_assoc();
+        $registrosFL = $countFL['NumRows'];
+    }else{
+        //-----------------------------------------------------------------------------------------------------BLOQUE A
+        $consultaEEA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE ubicacion='F. Ingeniería' AND estado='EN ESPERA'";
+        $resultEEA = $conexion->query($consultaEEA);
+        $countEEA = $resultEEA->fetch_assoc();
+        $registrosEEA = $countEEA['NumRows'];
+        
+        $consultaAA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE ubicacion='F. Ingeniería' AND estado='APROBADA'";
+        $resultAA = $conexion->query($consultaAA);
+        $countAA = $resultAA->fetch_assoc();
+        $registrosAA = $countAA['NumRows'];
+        
+        $consultaRA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE ubicacion='F. Ingeniería' AND estado='RECHAZADA'";
+        $resultRA = $conexion->query($consultaRA);
+        $countRA = $resultRA->fetch_assoc();
+        $registrosRA = $countRA['NumRows'];
+        
+        $consultaCA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE ubicacion='F. Ingeniería' AND estado='CANCELADA'";
+        $resultCA = $conexion->query($consultaCA);
+        $countCA = $resultCA->fetch_assoc();
+        $registrosCA = $countCA['NumRows'];
+        
+        $consultaFA="SELECT COUNT(*) AS NumRows FROM solicitudes WHERE ubicacion='F. Ingeniería' AND estado='FINALIZADA'";
         $resultFA = $conexion->query($consultaFA);
         $countFA = $resultFA->fetch_assoc();
         $registrosFA = $countFA['NumRows'];
@@ -235,12 +459,12 @@
         $registrosFL = $countFL['NumRows'];
     }
     //-----------------------------------------------------------------------------------------------------BLOQUE A LOCKERS LIBRES/OCUPADOS
-    $consultaAL2 ="SELECT COUNT(*) AS NumRows FROM lockers WHERE bloque='A' AND ocupado=0";
+    $consultaAL2 ="SELECT COUNT(*) AS NumRows FROM lockers WHERE ubicacion='F. Ingeniería' AND ocupado=0";
     $resultAL2 = $conexion->query($consultaAL2);
     $countAL2 = $resultAL2->fetch_assoc();
     $registrosAL2 = $countAL2['NumRows'];
     
-    $consultaAO2 ="SELECT COUNT(*) AS NumRows FROM lockers WHERE bloque='A' AND ocupado=1";
+    $consultaAO2 ="SELECT COUNT(*) AS NumRows FROM lockers WHERE ubicacion='F. Ingeniería' AND ocupado=1";
     $resultAO2 = $conexion->query($consultaAO2);
     $countAO2 = $resultAO2->fetch_assoc();
     $registrosAO2 = $countAO2['NumRows'];
@@ -334,24 +558,62 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/estiloListas.css">
         <link rel="stylesheet" href="css/estilosReportes.css">
+        <script type="text/javascript">
+            function capturar(){
+                var fIni=document.getElementById("fini").value;
+                var fFin=document.getElementById("ffin").value;
+                
+                if(fIni > fFin || fIni == fFin || fIni=="" || fFin==""){
+                    var msj = "Porfavor verifique el rango de fechas.\n\nGracias."
+                    alert(msj);   
+                }else{
+                    window.location.href = "reportesDec.php?fIni="+fIni+"&fFin="+fFin;    
+                }
+            }
+        </script>
     </head>
     <body>
         <header>
             <h1>REPORTE #1 - Estado de las solicitudes</h1>
             <HR align="CENTER" size="2" width="75%" color="white" noshade>
         </header>
+        <div class="col-xs-12">
+            <div class="pInfo">
+               <h3 class="eti "align="center">Para generar este reporte para un rango de fechas especifico, seleccione :</h3>
+                <div class="col-xs-12 col-sm-6">
+                    <form name="fcalen"> 
+                        <p class="etiquetassolicitud">FECHA INICIAL</p>    
+                        <input type="date" id="fini">
+                    </form>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <form name="fcalen"> 
+                        <p class="etiquetassolicitud">FECHA FINAL</p>
+                        <input type="date" id="ffin">
+                    </form>
+                </div>
+                <input class="botonV" onclick="capturar()" type="submit" value="VER" /><BR>
+            </div>
+        </div>
         <div class="container">
                <div class="main row">
                     <?php
                         if($fIni!="" && $fFin!=""){
-                            echo "<h3>A continuación se muestran todas solicitudes EN ESPERA, ACEPTADAS, RECHAZADAS, FINALIZADAS Y CANCELADAS por cada bloque que se han hecho entre ".$fIni." y ".$fFin.".</h3>";
+                            echo "<h3>A continuación se muestran todas las solicitudes EN ESPERA, ACEPTADAS, RECHAZADAS, FINALIZADAS Y CANCELADAS por cada bloque que se han hecho entre <BR><BR> <p class='fecha'>>   ".$fIni." ... ".$fFin."   <</p></h3>";
                         }else{
-                            echo "<h3>A continuación se muestran todas solicitudes EN ESPERA, ACEPTADAS, RECHAZADAS, FINALIZADAS Y CANCELADAS por cada bloque que se han hecho en la historia del sistema.</h3>";
+                            echo "<h3>A continuación se muestran todas las solicitudes EN ESPERA, ACEPTADAS, RECHAZADAS, FINALIZADAS Y CANCELADAS por cada bloque que se han hecho en la historia del sistema.</h3>";
                         }
                     ?>
-                    
+                    <br>
+                        <p class="conv"><span class="wait">O-</span> Solicitudes EN ESPERA</p>
+                        <p class="conv"><span class="acept">O-</span> Solicitudes ACEPTADAS</p>   
+                        <p class="conv"><span class="reject">O-</span>Solicitudes RECHAZADAS</p>   
+                        <p class="conv"><span class="finish">O-</span>Solicitudes FINALIZADAS</p>   
+                        <p class="conv"><span class="cancel">O-</span> Solicitudes CANCELADAS</p>   
+                        <p class="conv"><span class="info">O-</span> NO EXISTEN SOLICITUDES</p>   
+                    <br>
                     <script src="js/Chart.js"></script>
-                    <div class="<co-xs></col-xs>ol-md-6 col-lg-4" id="canvas-holder">
+                    <div class="col-xs-12 col-md-6 col-lg-4" id="canvas-holder">
                         <div class="bloques">
                             <h1>BLOQUE A</h1>
                             <canvas id="bloqueA" width="300" height="300"></canvas>    
@@ -438,12 +700,16 @@
         <h1>REPORTE #2 - Estado de los Lockers</h1>
         <HR align="CENTER" size="2" width="75%" color="white" noshade>               
         <h3 align="center">A continuación se muestra la cantidad de lockers DISPONIBLES y OCUPADOS en toda la universidad.</h3>
+        <br>
+            <p class="conv"><span class="acept">O-</span> Lockers DISPONIBLES</p>   
+            <p class="conv"><span class="reject">O-</span> Lockers OCUPADOS</p>   
+        <br>
         <div class="container">
             <div class="main row">
                 <script src="js/Chart.js"></script>
                 <div class="col-xs-12 col-md-6 col-lg-4" id="canvas-holder">
                            <div class="bloques">
-                                <h1>BLOQUE A</h1>
+                                <h1>FACULTAAD DE INGENIERÍA</h1>
                                 <canvas id="bloqueA2" width="300" height="300"></canvas>    
                            </div>
                         </div>
@@ -524,6 +790,7 @@
                             <canvas id="chart-area4" width="600" height="300"></canvas>
                         </div>
             </div>
+            <br><br>
         </div>
         <form class="dis_none">
             <?php
