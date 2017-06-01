@@ -66,12 +66,14 @@ header .contenedor{
 #linea {
     border: 1px solid rgb(16, 48, 92);
 }
+
 .wait {
     background: yellow;
     border-radius: 10px;
     text-align: center;
     color: black;
-    
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .check {
     background: green;
@@ -79,6 +81,8 @@ header .contenedor{
     text-align: center;
     color: white;
     font-weight: 700;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .reject {
     background: red;
@@ -86,6 +90,8 @@ header .contenedor{
     text-align: center;
     color: white;
     font-weight: 700;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .finish {
     background: blue;
@@ -93,6 +99,8 @@ header .contenedor{
     text-align: center;
     color: white;
     font-weight: 700;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .cancel {
     background: black;
@@ -100,6 +108,8 @@ header .contenedor{
     text-align: center;
     color: white;
     font-weight: 700;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 input[type="submit"] {
     background: #ff6600;
@@ -141,7 +151,7 @@ form {
 .res {
     color: white;
 }
-@media(max-width:770px){
+@media(max-width:995px){
     .resp {
         display: block;
     }       
@@ -178,4 +188,23 @@ form {
 #r {
     background: white !important;
     color: rgb(16, 48, 92) !important;
+}
+.TAKEN {
+    border: 2px solid white;
+    font-size: 20px;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     background: #FF0000;
+    color: #FF0000;
+}
+.FREE {
+    border: 2px solid white;
+    font-size: 20px;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     background: #11FF00;
+     background: #11FF00;
+    color: #11FF00;
 }
