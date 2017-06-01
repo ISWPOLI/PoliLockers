@@ -7,8 +7,14 @@
         <link rel="stylesheet" href="css/estilos.css">
         <script type="text/javascript">
             var msj = "En breve le enviaremos un correo con la información para que pueda acceder al sistema.\n\nGracias."
+            var msj2 = "Debe ingresar el usuario para continuar..."
             function resetP() {
-                alert(msj);
+                var u = document.getElementById("user").value;
+                if(u==""){
+                    alert(msj2);    
+                }else{
+                    alert(msj);    
+                }   
             }
         </script>
     </head>
@@ -20,9 +26,9 @@
             <form action="validarLogin.php" method="post">
                 <h1>!Bienvenido!</h1>
                 <p>Sistema de Gestión de lockers</p>
-                <input id="camposForm" type="text" placeholder ="&#9000; Usuario" required name="usuario">
-                <input id="camposForm" type="password" placeholder="&#128477; Contraseña" required name="clave">
-                <input id="camposForm" type="submit" value="INGRESAR" name="ingresar">
+                <input id="user" class="camposForm" type="text" placeholder ="&#9000; Usuario" required name="usuario">
+                <input class="camposForm" type="password" placeholder="&#128477; Contraseña" required name="clave">
+                <input class="camposForm" type="submit" value="INGRESAR" name="ingresar">
                 <p id="resetPass" onclick="resetP()"><a href="enviarPass.php" >Recuperar Contraseña</a></p>
             </form>    
         </div>

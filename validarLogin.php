@@ -16,9 +16,9 @@ if($_POST[ingresar]){
     }else if($rol[0] == 'Decano'){
         header("location:dec.php");                
     }else if($rol[0] == 'Coordinador'){
-        header("location:coor.html");                
+        header("location:coor.php?user=$usuario");                
     }else if($rol[0] == 'Profesor'){
-        header("location:prof.html");                
+        header("location:prof.php?user=$usuario");                
     }else{
         header("location:index.html");    
     }
