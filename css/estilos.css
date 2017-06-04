@@ -7,7 +7,7 @@
 body {
     background: rgb(16, 48, 92);
     min-height: 80vh;
-    
+
 }
 form {
     margin: auto;
@@ -15,7 +15,9 @@ form {
     max-width: 500px;
     background: rgb(232, 232, 232);
     padding: 30px;
+    margin-bottom: 100px;
     border-radius: 10px;
+
 }
 h1, p{
     text-align: center;
@@ -74,4 +76,10 @@ input[type="submit"]:active {
     h1 {
         font-size: inherit;
     }
+}
+#cambio{
+    display: flex;
+    float: right;
+    font-weight: 800;
+    font-size: large;
 }

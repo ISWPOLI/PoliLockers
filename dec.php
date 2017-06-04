@@ -8,6 +8,8 @@
     $registros2=mysqli_query($conexion, $consulta2);      
     $consulta3="SELECT * FROM usuarios WHERE rol='Coordinador'";
     $registros3=mysqli_query($conexion, $consulta3);   
+    $consulta4="SELECT * FROM usuarios WHERE rol='Coordinador' OR rol='Profesor'";
+    $registros4=mysqli_query($conexion, $consulta4);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -29,7 +31,16 @@
                     var msj = "Porfavor verifique su selección.\n\nGracias."
                     alert(msj);   
                 }
-                
+            }
+            function capturar2(){
+                var us=document.getElementById("l_b2").value;
+                var rol=document.getElementById("c2").value;
+                if(us!="Seleccione un usuario..." && rol!="Seleccione un Rol..."){
+                    window.location.href = "asignRol.php?user="+us+"&rol="+rol;    
+                }else{
+                    var msj = "Porfavor verifique su selección.\n\nGracias."
+                    alert(msj);   
+                }
             }
         </script>
     </head>
@@ -47,7 +58,7 @@
             </div>
         </header>
         <div class="container panelPrincipal">
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12">
                 <div class="panelIzq" width=100% height=100%>
                     <h2 class="titulo">Bloques</h2>
                     <HR align="CENTER" size="2" width="75%" color="white" noshade>
@@ -78,9 +89,9 @@
                 </table>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12 col-sm-6">
                 <div class="panelDer" width=100% height=100%>
-                    <h2 class="titulo">Asignar Coordinador</h2>
+                    <h2 class="titulo">Asignar Coordinador a Bloque</h2>
                     <HR align="CENTER" size="2" width="75%" color="white" noshade>
                     <select class="select" id="l_b">
                         <option>Seleccione una ubicación...</option>
@@ -99,6 +110,26 @@
                         ?>
                     </select><BR>
                     <input onclick="capturar()" type="submit" name="asignar" value="ASIGNAR" /><BR>
+                </div>  
+            </div>
+<div class="col-xs-12 col-sm-6">
+                <div class="panelDer" width=100% height=100%>
+                    <h2 class="titulo">Cambiar Rol</h2>
+                    <HR align="CENTER" size="2" width="75%" color="white" noshade>
+                    <select class="select" id="l_b2">
+                        <option>Seleccione un usuario...</option>
+                        <?php 
+                            while($row4 = $registros4->fetch_array(MYSQLI_BOTH)){
+                                echo    '<option>'.$row4['nombre'].'</option>';
+                            }
+                        ?>
+                    </select>
+                    <select class="select" id="c2">
+                        <option>Seleccione un Rol...</option>
+                        <option>Profesor</option>
+                        <option>Coordinador</option>
+                    </select><BR>
+                    <input onclick="capturar2()" type="submit" name="asignar" value="ASIGNAR" /><BR>
                 </div>  
             </div>
         </div>

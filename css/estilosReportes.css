@@ -17,7 +17,7 @@ h3 {
     color: white;
 }
 div h1{
-    color: black;
+    color: #ff6600;
 }
 .pInfo {
     background: white;
@@ -150,4 +150,8 @@ input[type="submit"]:active {
         width: 95% !important;
         height: 95% !important;
     }
+}
+.bloques h1{
+height: 90px;
+color: #ff6600;
 }

@@ -8,7 +8,7 @@
     
     $conexion=mysqli_connect("localhost", "id1813498_admin_pl", "admin123", "id1813498_bdlockers");
 
-    $consulta="SELECT coordinador FROM bloque WHERE letra_bloque='$bloq'";
+    $consulta="SELECT coordinador FROM bloque WHERE ubicacion='$ubi_l'";
     $resultado=mysqli_query($conexion, $consulta);
     $coord=mysqli_fetch_row($resultado);
 

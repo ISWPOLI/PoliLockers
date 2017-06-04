@@ -122,3 +122,28 @@ input[type="submit"]:active {
         display: inherit;
     }
 }
+#f_bloques{
+display: none;
+}
+@media(max-width:450px){
+#f_bloques{
+display: inherit;
+}
+.table{
+display:none;
+}
+}
+form {
+    background: white;
+    border-radius: 10px;
+    margin: 10px;
+}
+.centro {
+    text-align: center;
+}
+.tit {
+    color: #ff6600;
+}
+.res {
+    color: rgb(16, 48, 92);
+}

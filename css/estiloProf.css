@@ -58,7 +58,7 @@ header .contenedor{
 }
 .panelImagen {
     background-position: center;
-    background-image: url("../images/Locker.jpg");
+    background-image: url("../images/Locker.png");
     background-repeat: no-repeat;
     min-height: 170px;
     min-width: 75px;
@@ -76,6 +76,7 @@ header .contenedor{
     color: white;
     font-weight: 700;
     font-size: 10px;
+    min-height: 30px;
 }
 .PL{
     background: rgb(16, 48, 92);
@@ -212,4 +213,19 @@ p {
 }
 .res {
     color: rgb(16, 48, 92);
+}
+.eti {
+color: #000000;
+}
+.select {
+    width: 100%;
+    background: rgb(16, 48, 92);
+    border-radius: 10px;
+    height: 30px;
+}
+.botonV{
+margin-top: 60px !important;
+}
+.dis_none{
+display: none;
 }

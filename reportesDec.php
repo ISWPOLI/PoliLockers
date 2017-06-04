@@ -460,7 +460,7 @@
         </header>
         <div class="col-xs-12">
             <div class="pInfo">
-               <h3 class="eti "align="center">Para generar este reporte para un rango de fechas especifico, seleccione :</h3>
+               <h3 class="eti "align="center">Para generar este reporte para un rango de fechas específico, seleccione :</h3>
                 <div class="col-xs-12 col-sm-6">
                     <form name="fcalen"> 
                         <p class="etiquetassolicitud">FECHA INICIAL</p>    
